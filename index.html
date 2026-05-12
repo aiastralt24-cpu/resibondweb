@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resibond | Professional Sealants</title>
+    <meta
+      name="description"
+      content="Resibond professional sealants for bathrooms, doors, windows, glazing, bonding, weatherproofing, and specialist applications."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="#top" class="brand" aria-label="Resibond home">
+        <img src="public/assets/logos/resibond-logo-blue-transparent.png" alt="Resibond" />
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#finder">Finder</a>
+        <a href="#applications">Applications</a>
+        <a href="#shades">Shades</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-copy">
+          <p class="eyebrow">Professional sealant systems</p>
+          <h1>Joints that hold. Finishes that last.</h1>
+          <p class="lead">
+            Acrylic, acetoxy, neutral, hybrid, and SBS sealants for critical joints across
+            residential, commercial, and specialist site work.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#finder">Explore full range</a>
+            <a class="button secondary" href="#finder">Find the right sealant</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Featured Resibond product packs">
+          <img class="pack pack-main" src="public/assets/products/Weather 5010_2026.png" alt="Resibond Weather 5010 sealant" />
+          <img class="pack pack-left" src="public/assets/products/Hybrid 2IN1_2026.png" alt="Resibond Hybrid 2 in 1 sealant" />
+          <img class="pack pack-right" src="public/assets/products/Neutral 3010_2026.png" alt="Resibond Neutral 3010 sealant" />
+        </div>
+      </section>
+
+      <section id="finder" class="section finder-showcase">
+        <div class="section-heading">
+          <p class="eyebrow">Sealant finder</p>
+          <h2>Start with the joint. Find the right product.</h2>
+          <p>
+            Choose the application first. Resibond narrows the chemistry and product route so the
+            recommendation feels clear, not like a catalogue dump.
+          </p>
+        </div>
+        <div class="finder-panel">
+          <div class="finder-controls">
+            <span>01 / Select application</span>
+            <div class="chips dark" aria-label="Finder options">
+              <button type="button" class="active" data-route="bathroom" aria-pressed="true">Bathroom</button>
+              <button type="button" data-route="exterior" aria-pressed="false">Exterior</button>
+              <button type="button" data-route="glass" aria-pressed="false">Glass</button>
+              <button type="button" data-route="paintable" aria-pressed="false">Paintable</button>
+              <button type="button" data-route="grab" aria-pressed="false">Fast grab</button>
+            </div>
+            <p id="finder-route-copy">
+              Wet-area joints need clean finishing, moisture resistance, and dependable adhesion
+              around tiles, basins, sinks, and sanitary fixtures.
+            </p>
+          </div>
+          <div class="finder-products" id="finder-products" aria-live="polite">
+            <article>
+              <img src="public/assets/products/Bathmate_2026.png" alt="Bathmate pack" />
+              <div>
+                <span>Recommended</span>
+                <h3>Bathmate</h3>
+                <p>Acrylic sealant for bathrooms, wet areas, and sanitary finishing.</p>
+              </div>
+            </article>
+            <article>
+              <img src="public/assets/products/Weather 5010_2026.png" alt="Weather 5010 pack" />
+              <div>
+                <span>Exterior route</span>
+                <h3>Weather 5010</h3>
+                <p>Neutral sealant for exposed joints, UV, and water resistance.</p>
+              </div>
+            </article>
+            <article>
+              <img src="public/assets/products/Hybrid 2IN1_2026.png" alt="Hybrid 2 in 1 pack" />
+              <div>
+                <span>Bonding route</span>
+                <h3>Hybrid 2 in 1</h3>
+                <p>Hybrid sealing and bonding where strength and finish both matter.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="applications" class="section applications">
+        <div class="section-heading">
+          <p class="eyebrow">Applications</p>
+          <h2>Specify Resibond by the job.</h2>
+        </div>
+        <div class="application-board">
+          <a class="application-card application-card-large" href="#finder" data-route-link="bathroom">
+            <span>01 / Wet areas</span>
+            <strong>Bathrooms and sanitary zones</strong>
+            <p>Clean sealing for washrooms, sinks, tiles, and moisture-prone joints.</p>
+            <img src="public/assets/products/Bathmate_2026.png" alt="Bathmate sealant" />
+          </a>
+          <a class="application-card" href="#finder" data-route-link="paintable">
+            <span>02 / Frames</span>
+            <strong>Doors and windows</strong>
+            <p>Paintable finishing for frame gaps, trims, and interior junctions.</p>
+            <img src="public/assets/products/Doors & Windows_2026.png" alt="Doors and Windows sealant" />
+          </a>
+          <a class="application-card" href="#finder" data-route-link="glass">
+            <span>03 / Facades</span>
+            <strong>Glazing and glass</strong>
+            <p>Neutral cure systems for glass, aluminium, and facade details.</p>
+            <img src="public/assets/products/Weather 5010_2026.png" alt="Weather 5010 sealant" />
+          </a>
+          <a class="application-card application-card-dark" href="#finder" data-route-link="grab">
+            <span>04 / Fixing</span>
+            <strong>Bonding and mounting</strong>
+            <p>Hybrid strength for grab, hold, and clean finishing without visible fasteners.</p>
+            <img src="public/assets/products/Zero Nail_2026.png" alt="Zero Nail sealant" />
+          </a>
+        </div>
+      </section>
+
+      <section id="shades" class="shade-callout">
+        <div class="shade-copy">
+          <p class="eyebrow">Neutral 3010</p>
+          <h2>100+ shades for precise finishing.</h2>
+          <p>
+            A broader shade system helps architects, applicators, and contractors match joints
+            to surfaces with less compromise.
+          </p>
+          <div class="shade-swatches" aria-label="Sample shade swatches">
+            <span style="background:#efe7d6"></span>
+            <span style="background:#d9c3a6"></span>
+            <span style="background:#b78b5f"></span>
+            <span style="background:#8b7768"></span>
+            <span style="background:#687078"></span>
+            <span style="background:#303943"></span>
+          </div>
+        </div>
+        <div class="shade-product">
+          <img src="public/assets/products/Neutral 3010_2026.png" alt="Neutral 3010 sealant" />
+        </div>
+      </section>
+
+      <section id="contact" class="contact section">
+        <div>
+          <p class="eyebrow inverted">Trade enquiry</p>
+          <h2>Need the right Resibond product for a project?</h2>
+          <p>Share the surface, exposure, and application. The trade team can help narrow the chemistry and pack recommendation.</p>
+        </div>
+        <a class="button primary" href="mailto:sales@resibond.example">Contact Resibond</a>
+      </section>
+
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <img src="public/assets/logos/resibond-logo-white-transparent.png" alt="Resibond" />
+          <p>Professional sealant systems for critical joints, clean finishes, and demanding site work.</p>
+        </div>
+        <div class="footer-columns">
+          <div>
+            <h3>Products</h3>
+            <a href="#products">Neutral</a>
+            <a href="#products">Acrylic</a>
+            <a href="#products">Hybrid</a>
+            <a href="#products">Acetoxy</a>
+          </div>
+          <div>
+            <h3>Applications</h3>
+            <a href="#applications">Bathrooms</a>
+            <a href="#applications">Doors & windows</a>
+            <a href="#applications">Glazing</a>
+            <a href="#applications">Bonding</a>
+          </div>
+          <div>
+            <h3>Support</h3>
+            <a href="#finder">Sealant finder</a>
+            <a href="#contact">Trade enquiry</a>
+            <a href="#products">Catalogue</a>
+            <a href="#contact">Samples</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 Resibond. All rights reserved.</p>
+          <a href="#top">Back to top</a>
+        </div>
+      </footer>
+    </main>
+    <script>
+      const finderRoutes = {
+        bathroom: {
+          copy:
+            "Wet-area joints need clean finishing, moisture resistance, and dependable adhesion around tiles, basins, sinks, and sanitary fixtures.",
+          products: [
+            {
+              tag: "Best match",
+              name: "Bathmate",
+              img: "public/assets/products/Bathmate_2026.png",
+              alt: "Bathmate pack",
+              text: "Acrylic sealant for bathrooms, wet areas, and sanitary finishing."
+            },
+            {
+              tag: "Shade option",
+              name: "Neutral 3010",
+              img: "public/assets/products/Neutral 3010_2026.png",
+              alt: "Neutral 3010 pack",
+              text: "Neutral sealant with 100+ shades for visible joints and clean matching."
+            },
+            {
+              tag: "Heat route",
+              name: "Thermoseal",
+              img: "public/assets/products/Thermoseal_2026.png",
+              alt: "Thermoseal pack",
+              text: "Neutral sealant for high-flexibility and heat-sensitive applications."
+            }
+          ]
+        },
+        exterior: {
+          copy:
+            "Exterior joints need UV resistance, water resistance, movement tolerance, and long-service weatherproofing.",
+          products: [
+            {
+              tag: "Best match",
+              name: "Weather 5010",
+              img: "public/assets/products/Weather 5010_2026.png",
+              alt: "Weather 5010 pack",
+              text: "Neutral sealant for exposed joints, facades, and weather-facing details."
+            },
+            {
+              tag: "General purpose",
+              name: "GP 100",
+              img: "public/assets/products/GP 100_2026.png",
+              alt: "GP 100 pack",
+              text: "Acetoxy sealant for strong adhesion on non-porous surfaces."
+            },
+            {
+              tag: "Premium route",
+              name: "Premium GP 1010",
+              img: "public/assets/products/Premium GP 1010_2026.png",
+              alt: "Premium GP 1010 pack",
+              text: "Acetoxy sealant for higher-grade general purpose sealing."
+            }
+          ]
+        },
+        glass: {
+          copy:
+            "Glass and facade details need neutral cure chemistry, clean tooling, and compatibility with sensitive substrates.",
+          products: [
+            {
+              tag: "Best match",
+              name: "Weather 5010",
+              img: "public/assets/products/Weather 5010_2026.png",
+              alt: "Weather 5010 pack",
+              text: "Neutral cure sealant for glass, aluminium, and facade joints."
+            },
+            {
+              tag: "Colour match",
+              name: "Neutral 3010",
+              img: "public/assets/products/Neutral 3010_2026.png",
+              alt: "Neutral 3010 pack",
+              text: "100+ shade system for visible glass and facade finishing."
+            },
+            {
+              tag: "Hybrid route",
+              name: "Hybrid 2 in 1",
+              img: "public/assets/products/Hybrid 2IN1_2026.png",
+              alt: "Hybrid 2 in 1 pack",
+              text: "Hybrid sealing and bonding where finish and strength both matter."
+            }
+          ]
+        },
+        paintable: {
+          copy:
+            "Paintable joints need acrylic or hybrid products that tool neatly and sit cleanly under coatings.",
+          products: [
+            {
+              tag: "Best match",
+              name: "Doors & Windows",
+              img: "public/assets/products/Doors & Windows_2026.png",
+              alt: "Doors and Windows pack",
+              text: "Paintable acrylic for frame gaps, trims, and interior finishing joints."
+            },
+            {
+              tag: "Wet-area route",
+              name: "Bathmate",
+              img: "public/assets/products/Bathmate_2026.png",
+              alt: "Bathmate pack",
+              text: "Acrylic sealant for wet rooms and sanitary areas."
+            },
+            {
+              tag: "Strength route",
+              name: "Hybrid 2 in 1",
+              img: "public/assets/products/Hybrid 2IN1_2026.png",
+              alt: "Hybrid 2 in 1 pack",
+              text: "Paintable hybrid strength for sealing and bonding in one application."
+            }
+          ]
+        },
+        grab: {
+          copy:
+            "Mounting jobs need early grab, strong hold, and clean finishing without visible mechanical fasteners.",
+          products: [
+            {
+              tag: "Best match",
+              name: "Zero Nail",
+              img: "public/assets/products/Zero Nail_2026.png",
+              alt: "Zero Nail pack",
+              text: "Instant grab for mounting, fixing, and bonding without nails."
+            },
+            {
+              tag: "Hybrid route",
+              name: "Hybrid 2 in 1",
+              img: "public/assets/products/Hybrid 2IN1_2026.png",
+              alt: "Hybrid 2 in 1 pack",
+              text: "Hybrid sealing and bonding where strength and finish both matter."
+            },
+            {
+              tag: "SBS route",
+              name: "Saves Nail",
+              img: "public/assets/products/Saves Nails_2026.png",
+              alt: "Saves Nail pack",
+              text: "SBS sealant for construction material adhesion and instant grip."
+            }
+          ]
+        }
+      };
+
+      const routeCopy = document.querySelector("#finder-route-copy");
+      const productsHost = document.querySelector("#finder-products");
+      const routeButtons = [...document.querySelectorAll("[data-route]")];
+
+      function setFinderRoute(route) {
+        const data = finderRoutes[route] || finderRoutes.bathroom;
+        routeCopy.textContent = data.copy;
+        productsHost.innerHTML = data.products
+          .map(
+            (product) => `
+              <article>
+                <img src="${product.img}" alt="${product.alt}" />
+                <div>
+                  <span>${product.tag}</span>
+                  <h3>${product.name}</h3>
+                  <p>${product.text}</p>
+                </div>
+              </article>
+            `
+          )
+          .join("");
+
+        routeButtons.forEach((button) => {
+          const isActive = button.dataset.route === route;
+          button.classList.toggle("active", isActive);
+          button.setAttribute("aria-pressed", String(isActive));
+        });
+      }
+
+      routeButtons.forEach((button) => {
+        button.addEventListener("click", () => setFinderRoute(button.dataset.route));
+      });
+
+      document.querySelectorAll("[data-route-link]").forEach((link) => {
+        link.addEventListener("click", () => setFinderRoute(link.dataset.routeLink));
+      });
+    </script>
+  </body>
+</html>
