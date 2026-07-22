@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
 import { JsonLd } from "@/components/json-ld";
 import { products } from "@/lib/catalog";
+import { solutionBySlug } from "@/lib/solutions";
 
 export const metadata: Metadata = {
   title: "Professional Sealants & Adhesives",
@@ -14,13 +15,18 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const featured = ["bathmate","weather-5010","hybrid-2-in-1","fireshield"].map((slug)=>products.find((product)=>product.slug===slug)).filter((product):product is (typeof products)[number]=>Boolean(product));
+  const activeProductSlugs = new Set(products.map((product) => product.slug));
   const finderRoutes = [
-    { index: "01", title: "Bathrooms", detail: "Sanitary joints, basins, sinks and wet-area finishing", href: "/solutions/bathrooms", count: 3 },
-    { index: "02", title: "Doors & windows", detail: "Frame gaps, UPVC junctions, sills and perimeter sealing", href: "/solutions/doors-windows", count: 4 },
-    { index: "03", title: "Glazing", detail: "Glass, mirrors, façades and visible architectural joints", href: "/solutions/glazing", count: 4 },
-    { index: "04", title: "Weatherproofing", detail: "Exterior joints, ACP, curtain walls and exposed perimeters", href: "/solutions/weatherproofing", count: 4 },
-    { index: "05", title: "Mounting & bonding", detail: "Panels, mirrors, stone, wood and mixed-material fixing", href: "/solutions/mounting-bonding", count: 4 },
-  ];
+    { index: "01", slug: "bathrooms", title: "Bathrooms", detail: "Sanitary joints, basins, sinks and wet-area finishing" },
+    { index: "02", slug: "doors-windows", title: "Doors & windows", detail: "Frame gaps, UPVC junctions, sills and perimeter sealing" },
+    { index: "03", slug: "glazing", title: "Glazing", detail: "Glass, mirrors, façades and visible architectural joints" },
+    { index: "04", slug: "weatherproofing", title: "Weatherproofing", detail: "Exterior joints, ACP, curtain walls and exposed perimeters" },
+    { index: "05", slug: "mounting-bonding", title: "Mounting & bonding", detail: "Panels, mirrors, stone, wood and mixed-material fixing" },
+  ].map((route) => ({
+    ...route,
+    href: `/solutions/${route.slug}`,
+    count: solutionBySlug(route.slug)?.productSlugs.filter((slug) => activeProductSlugs.has(slug)).length ?? 0,
+  }));
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
   return (
     <>
