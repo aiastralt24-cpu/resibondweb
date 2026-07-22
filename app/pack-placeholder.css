@@ -1,0 +1,8 @@
+.pack-placeholder{display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:18px;width:min(100%,320px)!important;height:360px!important;padding:30px;border:1px solid rgba(8,58,92,.18);background:linear-gradient(145deg,#fff,var(--bone));text-align:center;filter:none!important}
+.pack-placeholder img{width:min(180px,80%)!important;height:auto!important;object-fit:contain;filter:none!important}
+.product-image .pack-placeholder img,.product-hero-image .pack-placeholder img{width:min(180px,80%)!important;height:auto!important}
+.pack-placeholder strong{font-family:"Barlow Condensed",Arial,sans-serif;color:var(--deep);font-size:38px;line-height:1}
+.pack-placeholder span{color:var(--quiet);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.product-hero-image>.pack-placeholder{height:min(620px,70vh)!important}
+.comparison-product>.pack-placeholder,.comparison-mobile article>.pack-placeholder{height:260px!important;margin:auto}
+.comparison-product>.pack-placeholder strong,.comparison-mobile article>.pack-placeholder strong{font-size:28px}

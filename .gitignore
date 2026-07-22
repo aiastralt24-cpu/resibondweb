@@ -1,4 +1,11 @@
-test-results/
-playwright-report/
+node_modules/
+.next/
 dist/
+output/
+test-results/
+*.tsbuildinfo
+.env*.local
+.data/
+.firecrawl/
+.playwright-cli/
 .DS_Store

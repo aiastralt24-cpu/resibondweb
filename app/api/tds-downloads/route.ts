@@ -1,0 +1,5 @@
+import { NextRequest, NextResponse } from "next/server";
+import { clean, createTdsLead, validMobile } from "@/lib/leads";
+import { productBySlug } from "@/lib/catalog";
+import { allowRequest } from "@/lib/rate-limit";
+export async function POST(request:NextRequest){const ip=request.headers.get("x-forwarded-for")?.split(",")[0]||"local";if(!allowRequest(`tds:${ip}`,10))return NextResponse.json({error:"Too many attempts. Please try again shortly."},{status:429});const body=await request.json().catch(()=>null);const name=clean(body?.name,100),mobile=clean(body?.mobile,20),slug=clean(body?.product,100),product=productBySlug(slug);if(name.length<2||!validMobile(mobile)||!product?.tdsUrl||body?.website)return NextResponse.json({error:"Please provide a valid name and mobile number."},{status:400});try{await createTdsLead({name,mobile,product_slug:slug,source:clean(body.source,120)||"product-page",consent_at:new Date().toISOString()});return NextResponse.json({ok:true,downloadUrl:product.tdsUrl});}catch{return NextResponse.json({error:"We could not prepare the download. Please try again."},{status:503});}}
