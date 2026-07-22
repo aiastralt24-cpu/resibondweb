@@ -57,7 +57,7 @@ export const solutions: SolutionHub[] = [
     description: "Compare Resibond glazing sealants for glass-to-glass, glass-to-frame, mirrors, curtain walls and exterior glazing joints.",
     intro: "Glazing joints demand reliable adhesion, a controlled bead profile and compatibility with glass, frames, coatings and adjoining façade materials.",
     body: "Explore neutral, acetoxy and specialist glazing routes for interior glass, mirrors, window frames and exposed façade joints. Structural or movement-critical glazing must always follow verified project documentation and the current technical data sheet.",
-    productSlugs: ["neutral-3010", "weather-5010", "premium-gp-1010", "buildglaze"],
+    productSlugs: ["neutral-3010", "weather-5010", "premium-gp-1010"],
     applicationLabels: ["Glazing", "Exterior glazing", "Glass-to-frame sealing", "Glass-to-glass joints", "Glass-to-metal frames", "Curtain walls", "Mirrors"],
     considerations: [
       { title: "Glass and coating compatibility", text: "Test adhesion and avoid chemistry that can affect sensitive coatings or finishes." },
@@ -67,7 +67,6 @@ export const solutions: SolutionHub[] = [
     faqs: [
       { q: "Which Resibond silicone is used for exterior glazing?", a: "Weather 5010 is mapped to exterior glazing and façade weather sealing. Neutral 3010 and other glazing products address different substrates and conditions." },
       { q: "Can acetoxy silicone be used on every glazing frame?", a: "No. Acetoxy chemistry may not suit sensitive metals, coatings or substrates. Confirm compatibility using the current TDS and an adhesion test." },
-      { q: "Is BuildGlaze a structural glazing product?", a: "A product name or application map does not establish structural suitability. Structural use requires official technical documentation and an approved system specification." },
     ],
   },
   {

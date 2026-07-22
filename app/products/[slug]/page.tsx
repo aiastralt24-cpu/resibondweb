@@ -23,8 +23,6 @@ const applicationHeadings: Record<string, string> = {
   fireshield: "Verify the fire-rated system before installation.",
   "duct-seal": "Clean the duct joint. Seal continuously.",
   "mirror-mount": "Check the mirror backing. Mount with ventilated beads.",
-  buildglaze: "Clean the glazing joint. Tool to the specified profile.",
-  "bus-seal": "Test the coating. Seal the panel joint.",
   "turf-grass": "Prepare the base. Align and hold the turf.",
   "sanitary-super-white": "Dry the fixture joint. Tool a water-shedding seal.",
 };
