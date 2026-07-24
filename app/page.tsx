@@ -33,8 +33,8 @@ export default function HomePage() {
       <JsonLd data={{ "@context": "https://schema.org", "@type": "Organization", name: "Resibond", url: siteUrl, logo: `${siteUrl}/assets/logos/resibond-logo-blue-transparent.png` }} />
       <section className="hero">
         <div className="hero-copy"><h1>The right sealant for every critical joint.</h1><p>Professional sealing and bonding systems for homes, projects and specialist applications.</p><div className="actions"><Link className="button primary" href="/product-finder">Find your product <span>→</span></Link><Link className="button secondary" href="/products">Explore the range <span>→</span></Link></div></div>
-        <div className="hero-products" aria-label="Featured Resibond products">
-          {products.slice(0, 5).map((product, index) => <Image key={product.slug} className={`hero-pack hero-pack-${index + 1}`} src={product.image!} alt={`${product.name} pack`} width={240} height={520} priority />)}
+        <div className="hero-products hero-range-shot">
+          <Image className="hero-group-shot" src="/assets/products/Resibond-range-groupshot.png" alt="Resibond sealants and adhesives product range" width={1794} height={1118} priority />
         </div>
       </section>
       <section className="finder-band">

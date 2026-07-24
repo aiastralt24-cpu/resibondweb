@@ -57,7 +57,7 @@ export const solutions: SolutionHub[] = [
     description: "Compare Resibond glazing sealants for glass-to-glass, glass-to-frame, mirrors, curtain walls and exterior glazing joints.",
     intro: "Glazing joints demand reliable adhesion, a controlled bead profile and compatibility with glass, frames, coatings and adjoining façade materials.",
     body: "Explore neutral, acetoxy and specialist glazing routes for interior glass, mirrors, window frames and exposed façade joints. Structural or movement-critical glazing must always follow verified project documentation and the current technical data sheet.",
-    productSlugs: ["neutral-3010", "weather-5010", "premium-gp-1010"],
+    productSlugs: ["neutral-3010", "weather-5010", "gp-100", "premium-gp-1010"],
     applicationLabels: ["Glazing", "Exterior glazing", "Glass-to-frame sealing", "Glass-to-glass joints", "Glass-to-metal frames", "Curtain walls", "Mirrors"],
     considerations: [
       { title: "Glass and coating compatibility", text: "Test adhesion and avoid chemistry that can affect sensitive coatings or finishes." },
@@ -75,7 +75,7 @@ export const solutions: SolutionHub[] = [
     description: "Discover Resibond exterior sealants for ACP joints, curtain walls, façades, building perimeters and exposed glazing.",
     intro: "Exterior joints must manage rain, sunlight, temperature changes and movement without losing adhesion or allowing water into the building envelope.",
     body: "This guide connects weatherproofing applications with Resibond products for ACP, glazing, curtain walls and building perimeters. Joint design, backing material, primer requirements and movement capability must be verified before specification.",
-    productSlugs: ["weather-5010", "neutral-3010", "hybrid-2-in-1", "gp-100"],
+    productSlugs: ["weather-5010", "neutral-3010", "hybrid-2-in-1", "gp-100", "premium-gp-1010"],
     applicationLabels: ["Weatherproofing", "Building perimeters", "Exterior glazing", "Curtain walls", "ACP joints"],
     considerations: [
       { title: "UV and rain exposure", text: "Use a route intended for persistent weather and sunlight exposure." },
