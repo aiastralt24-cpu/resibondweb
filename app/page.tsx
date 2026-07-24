@@ -8,8 +8,8 @@ import { products } from "@/lib/catalog";
 import { solutionBySlug } from "@/lib/solutions";
 
 export const metadata: Metadata = {
-  title: "Professional Sealants & Adhesives",
-  description: "Discover Resibond sealants and adhesives by product, chemistry, application or substrate, and find the right route for every critical joint.",
+  title: "The Seal Specialist | Professional Sealants & Adhesives",
+  description: "Resibond, the seal specialist from Astral Adhesives. Discover professional sealants and adhesives by product, chemistry, application or substrate.",
   alternates: { canonical: "/" },
 };
 
@@ -30,9 +30,14 @@ export default function HomePage() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
   return (
     <>
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "Organization", name: "Resibond", url: siteUrl, logo: `${siteUrl}/assets/logos/resibond-logo-blue-transparent.png` }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "Brand", name: "Resibond", slogan: "The Seal Specialist", url: siteUrl, logo: `${siteUrl}/assets/logos/resibond-logo-blue-transparent.png`, parentOrganization: { "@type": "Organization", name: "Astral Adhesives", url: "https://www.astraladhesives.com/" } }} />
       <section className="hero">
-        <div className="hero-copy"><h1>The right sealant for every critical joint.</h1><p>Professional sealing and bonding systems for homes, projects and specialist applications.</p><div className="actions"><Link className="button primary" href="/product-finder">Find your product <span>→</span></Link><Link className="button secondary" href="/products">Explore the range <span>→</span></Link></div></div>
+        <div className="hero-copy">
+          <span className="hero-endorsement">Resibond · From Astral Adhesives</span>
+          <h1>The Seal Specialist.</h1>
+          <p>Professional sealing and bonding systems for critical joints across homes, projects and specialist applications.</p>
+          <div className="actions"><Link className="button primary" href="/product-finder">Find your product <span>→</span></Link><Link className="button secondary" href="/products">Explore the range <span>→</span></Link></div>
+        </div>
         <div className="hero-products hero-range-shot">
           <Image className="hero-group-shot" src="/assets/products/Resibond-range-groupshot.png" alt="Resibond sealants and adhesives product range" width={1794} height={1118} priority />
         </div>
@@ -70,6 +75,24 @@ export default function HomePage() {
       </section>
       <section className="section-shell"><div className="section-heading"><span className="section-index">Featured range</span><h2>Different products for different jobs.</h2><Link className="text-link" href="/products">View all products →</Link></div><div className="product-grid">{featured.map((product) => <ProductCard key={product.slug} product={product} context="homepage" />)}</div></section>
       <section className="application-feature"><div><span className="section-index">Connected discovery</span><h2>Specify by chemistry, application or substrate.</h2></div><div className="feature-columns"><Link href="/chemistries"><strong>Chemistry</strong><span>Acrylic, acetoxy, neutral, hybrid and SBS routes.</span></Link><Link href="/applications"><strong>Application</strong><span>From bathrooms and glazing to weatherproofing and mounting.</span></Link><Link href="/substrates"><strong>Substrate</strong><span>Find compatible routes for glass, metal, mirror, wood and more.</span></Link></div></section>
+      <section className="astral-story" aria-labelledby="astral-story-title">
+        <div className="astral-story-heading">
+          <span className="section-index">An Astral brand</span>
+          <h2 id="astral-story-title">Specialist performance, backed by Astral.</h2>
+        </div>
+        <div className="astral-story-copy">
+          <p>Resibond is part of Astral Adhesives, a manufacturer of adhesives, sealants, putties and construction chemicals with a focus on quality, reliability and continuous innovation.</p>
+          <div className="astral-proof-grid" aria-label="Astral credentials">
+            <div><strong>1,800+</strong><span>distributors nationwide</span></div>
+            <div><strong>Since 1998</strong><span>Astral serving building-material needs</span></div>
+            <div><strong>5 businesses</strong><span>Pipes, adhesives, construction chemicals, paints and bathware</span></div>
+          </div>
+          <div className="astral-story-links">
+            <Link href="/about">About Resibond and Astral <span aria-hidden="true">→</span></Link>
+            <a href="https://www.astraladhesives.com/" target="_blank" rel="noreferrer">Visit Astral Adhesives <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
       <section className="enquiry-band"><div><span className="section-index">Project enquiry</span><h2>Need help specifying the right product?</h2></div><Link className="button gold" href="/contact?source=homepage">Talk to the Resibond team →</Link></section>
     </>
   );
