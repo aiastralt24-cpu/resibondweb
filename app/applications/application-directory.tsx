@@ -11,6 +11,7 @@ export type ApplicationEntry = {
   name: string;
   slug: string;
   category: Category;
+  aliases: string[];
   products: Array<{ name: string; slug: string; image?: string }>;
 };
 
@@ -33,7 +34,7 @@ export function ApplicationDirectory({ entries }: { entries: ApplicationEntry[] 
   const popular = popularSlugs.map((slug) => entries.find((entry) => entry.slug === slug)).filter((entry): entry is ApplicationEntry => Boolean(entry));
   const filtered = useMemo(() => entries.filter((entry) => {
     const matchesCategory = category === "All" || entry.category === category;
-    const searchable = `${entry.name} ${entry.category} ${entry.products.map((product) => product.name).join(" ")}`.toLowerCase();
+    const searchable = `${entry.name} ${entry.aliases.join(" ")} ${entry.category} ${entry.products.map((product) => product.name).join(" ")}`.toLowerCase();
     return matchesCategory && (!deferredQuery || searchable.includes(deferredQuery));
   }), [category, deferredQuery, entries]);
 

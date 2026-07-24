@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useDeferredValue, useMemo, useState } from "react";
 import { ProductCard } from "@/components/product-card";
-import type { Product } from "@/lib/catalog";
+import { productSearchAliases, type Product } from "@/lib/catalog";
 
 const ALL = "All";
 
@@ -15,7 +15,7 @@ export function CatalogueExplorer({ products }: { products: Product[] }) {
   const deferredQuery = useDeferredValue(query.trim().toLowerCase());
 
   const filtered = useMemo(() => products.filter((product) => {
-    const searchable = [product.name, product.chemistry, product.range, product.positioning, ...product.applications, ...product.substrates].join(" ").toLowerCase();
+    const searchable = [product.name, product.chemistry, product.range, product.positioning, ...product.applications, ...product.substrates, ...(productSearchAliases[product.slug] || [])].join(" ").toLowerCase();
     return (!deferredQuery || searchable.includes(deferredQuery)) && (chemistry === ALL || product.chemistry === chemistry) && (environment === ALL || product.environment.includes(environment));
   }), [chemistry, deferredQuery, environment, products]);
 

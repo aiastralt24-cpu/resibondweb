@@ -2,7 +2,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
-import type { Product } from "@/lib/catalog";
+import { applicationAliases, type Product } from "@/lib/catalog";
 
 export function Finder({ products }: { products: Product[] }) {
   const [application, setApplication] = useState("All");
@@ -12,7 +12,7 @@ export function Finder({ products }: { products: Product[] }) {
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [compare, setCompare] = useState<string[]>([]);
   const applications = ["All", ...new Set(products.flatMap((p) => p.applications))];
-  const visibleApplications = applications.filter((value) => value.toLowerCase().includes(search.toLowerCase()));
+  const visibleApplications = applications.filter((value) => [value, ...(applicationAliases[value] || [])].join(" ").toLowerCase().includes(search.toLowerCase()));
   const applicationGroups=useMemo(()=>{const groups:Record<string,string[]>={"Bathrooms & interiors":[],"Openings & façades":[],"Mounting & bonding":[],"Specialist systems":[],"Other applications":[]};for(const value of visibleApplications.filter((item)=>item!=="All")){const key=/bath|basin|sink|sanitary|kitchen|gypsum|electrical/i.test(value)?"Bathrooms & interiors":/window|glass|glaz|façade|facade|curtain|acp|weather|frame|door/i.test(value)?"Openings & façades":/mount|bond|fix|nail|mirror|panel|wood|stone|turf|grass/i.test(value)?"Mounting & bonding":/automotive|engine|gasket|duct|fire|bus|industrial/i.test(value)?"Specialist systems":"Other applications";groups[key].push(value)}return Object.entries(groups).filter(([,values])=>values.length)},[visibleApplications]);
   const matches = useMemo(() => products.filter((p) => (application === "All" || p.applications.includes(application)) && (environment === "All" || p.environment.includes(environment)) && (chemistry === "All" || p.chemistry === chemistry)), [application, environment, chemistry, products]);
   const activeFilters = [application, environment, chemistry].filter((value) => value !== "All").length;

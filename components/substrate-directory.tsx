@@ -6,6 +6,7 @@ import { useDeferredValue, useMemo, useState } from "react";
 type SubstrateEntry = {
   name: string;
   slug: string;
+  aliases: string[];
   products: Array<{ name: string; slug: string }>;
 };
 
@@ -23,12 +24,12 @@ const families = [
   {
     index: "03",
     name: "Interiors & finishes",
-    substrates: ["Ceramic", "Ceramics", "Plastic", "Porcelain", "PVC", "Sanitary fixtures", "Stone", "UPVC"],
+    substrates: ["Ceramic", "Louvers", "Plastic", "Porcelain", "PVC", "Sanitary fixtures", "Stone", "UPVC"],
   },
   {
     index: "04",
     name: "Specialist systems",
-    substrates: ["Artificial grass", "Engine components", "Fire-rated assemblies", "HVAC ductwork", "Industrial assemblies", "Metal flanges"],
+    substrates: ["Artificial grass", "Electrical assemblies", "Electronic components", "Engine components", "Fire-rated assemblies", "HVAC ductwork", "Industrial assemblies", "Metal flanges"],
   },
 ];
 
@@ -52,7 +53,7 @@ export function SubstrateDirectory({ entries }: { entries: SubstrateEntry[] }) {
       .filter((entry): entry is SubstrateEntry => Boolean(entry))
       .filter((entry) => {
         if (!deferredQuery) return true;
-        return `${entry.name} ${entry.products.map((product) => product.name).join(" ")}`.toLowerCase().includes(deferredQuery);
+        return `${entry.name} ${entry.aliases.join(" ")} ${entry.products.map((product) => product.name).join(" ")}`.toLowerCase().includes(deferredQuery);
       }),
   })).filter((family) => family.entries.length), [deferredQuery, entryByName]);
 

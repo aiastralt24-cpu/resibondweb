@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { applications, products, slugify } from "@/lib/catalog";
+import { applicationAliases, applications, products, slugify } from "@/lib/catalog";
 import { ApplicationDirectory, type ApplicationEntry } from "./application-directory";
 
 export const metadata: Metadata = {
@@ -27,6 +27,7 @@ export default function Page() {
     return {
       name,
       slug: slugify(name),
+      aliases: applicationAliases[name] || [],
       category: categoryFor(name),
       products: matches.map(({ name: productName, slug, image }) => ({ name: productName, slug, image })),
     };
