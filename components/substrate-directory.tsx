@@ -13,23 +13,43 @@ type SubstrateEntry = {
 const families = [
   {
     index: "01",
-    name: "Glazing & metals",
-    substrates: ["ACP", "Aluminium", "Glass", "Metal", "Mirror", "Tinted panels", "Windows"],
+    name: "Glass & glazing",
+    substrates: ["Back-painted glass", "Glass", "Glass-to-metal interfaces", "Mirror", "Tinted panels"],
   },
   {
     index: "02",
-    name: "Building materials",
-    substrates: ["Building joints", "Common building surfaces", "Concrete", "Construction materials", "Gypsum board", "Interior construction surfaces", "Masonry", "Plaster", "Walls", "Wood"],
+    name: "Metals & panels",
+    substrates: ["ACP", "Acrylic panels", "Aluminium", "Aluminium roofing", "Curtain-wall profiles", "Façade panels", "Metal", "Metal flanges", "Metal lap joints", "Steel"],
   },
   {
     index: "03",
-    name: "Interiors & finishes",
-    substrates: ["Ceramic", "Louvers", "Plastic", "Porcelain", "PVC", "Sanitary fixtures", "Stone", "UPVC"],
+    name: "Masonry & walls",
+    substrates: ["Building joints", "Common building surfaces", "Concrete", "Construction materials", "Gypsum board", "Interior construction surfaces", "Masonry", "Plaster", "Plinths", "Porous masonry surfaces", "Wall tiles", "Walls"],
   },
   {
     index: "04",
+    name: "Wood & finishes",
+    substrates: ["Ceramic", "Granite", "Louvers", "Marble", "Non-porous surfaces", "Plywood", "Porcelain", "Porous surfaces", "Stone", "Wood"],
+  },
+  {
+    index: "05",
+    name: "Doors & windows",
+    substrates: ["AC-to-window edge gaps", "Door frames", "Fire doors", "Fire windows", "Frame-to-wall joints", "Plastic", "PVC", "UPVC", "Window frames", "Window sills"],
+  },
+  {
+    index: "06",
+    name: "Bathrooms & sanitary",
+    substrates: ["Commercial kitchens", "Kitchen sinks", "Sanitary fixtures", "Sanitaryware", "Shower units", "Toilets", "Washbasins"],
+  },
+  {
+    index: "07",
+    name: "Automotive & industrial",
+    substrates: ["Automotive components", "Electrical assemblies", "Electrical boards", "Electronic components", "Engine components", "Industrial assemblies"],
+  },
+  {
+    index: "08",
     name: "Specialist systems",
-    substrates: ["Artificial grass", "Electrical assemblies", "Electronic components", "Engine components", "Fire-rated assemblies", "HVAC ductwork", "Industrial assemblies", "Metal flanges"],
+    substrates: ["Artificial grass", "Fire-rated assemblies", "HVAC ductwork"],
   },
 ];
 
@@ -69,7 +89,7 @@ export function SubstrateDirectory({ entries }: { entries: SubstrateEntry[] }) {
         <label>
           <span className="sr-only">Search surfaces or materials</span>
           <SearchIcon />
-          <input value={query} onChange={(event) => setQuery(event.target.value)} type="search" placeholder="Search surfaces or materials" />
+          <input value={query} onInput={(event) => setQuery(event.currentTarget.value)} type="search" placeholder="Search surfaces or materials" />
           {query ? <button type="button" onClick={() => setQuery("")} aria-label="Clear search">Clear</button> : null}
         </label>
         <p aria-live="polite"><strong>{visibleCount}</strong> {visibleCount === 1 ? "surface" : "surfaces"}{query ? " found" : ""}</p>
