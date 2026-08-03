@@ -8,24 +8,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
 };
 
-const supportRoutes = [
-  {
-    number: "01",
-    title: "Product selection",
-    copy: "Not sure which product fits your application? Share the surfaces and conditions with us.",
-  },
-  {
-    number: "02",
-    title: "Technical support",
-    copy: "Need help with application, performance, compatibility or technical documents?",
-  },
-  {
-    number: "03",
-    title: "Dealer enquiries",
-    copy: "Talk to the team about distribution, partnerships and bulk requirements.",
-  },
-];
-
 export default async function Page({
   searchParams,
 }: {
@@ -37,10 +19,6 @@ export default async function Page({
     <div className="contact-page">
       <section className="contact-enquiry" aria-labelledby="contact-title">
         <div className="contact-intro">
-          <div className="contact-step" aria-hidden="true">
-            <span>Details</span>
-            <strong>01</strong>
-          </div>
           <h1 id="contact-title">Tell us what you’re working on.</h1>
           <p>
             Share the surface, environment and project details. Our team will route your
@@ -57,17 +35,16 @@ export default async function Page({
         </div>
       </section>
 
-      <section className="contact-support" aria-label="Enquiry support routes">
-        {supportRoutes.map((route) => (
-          <article key={route.number}>
-            <strong className="support-number" aria-hidden="true">{route.number}</strong>
-            <div>
-              <h2>{route.title}</h2>
-              <p>{route.copy}</p>
-              <a href="#enquiry-form">Start an enquiry <span aria-hidden="true">→</span></a>
-            </div>
-          </article>
-        ))}
+      <section className="contact-office" aria-labelledby="contact-office-title">
+        <div>
+          <span className="section-index">Astral Adhesives customer care</span>
+          <h2 id="contact-office-title">Speak directly with the team.</h2>
+        </div>
+        <address>
+          <div><strong>Customer care</strong><a href="tel:+917311103331">+91 73111 03331</a></div>
+          <div><strong>Email</strong><a href="mailto:customercare@astraladhesives.com">customercare@astraladhesives.com</a></div>
+          <div><strong>Registered &amp; corporate office</strong><span>“Astral House”, 207/1, Behind Rajpath Club, Off S.G. Highway, Ahmedabad 380059, Gujarat</span></div>
+        </address>
       </section>
     </div>
   );
