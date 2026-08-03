@@ -34,8 +34,8 @@ export function SurfaceSelector() {
   return (
     <section className="surface-selector" aria-labelledby="surface-selector-title">
       <div className="surface-selector-intro">
-        <span className="section-index">Surface-to-surface guide</span>
-        <h2 id="surface-selector-title">What are you joining?</h2>
+        <span className="section-index">Surface matching</span>
+        <h2 id="surface-selector-title">Select two surfaces.</h2>
         <p>Select both surfaces and the type of work to see the spreadsheet&apos;s recommendations in ranked order.</p>
       </div>
 
