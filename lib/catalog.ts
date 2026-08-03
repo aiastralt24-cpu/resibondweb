@@ -79,7 +79,7 @@ export const products: Product[] = [
   },
   {
     slug: "saves-nails", name: "Saves Nails", range: "Resibond", chemistry: "SBS", image: "/assets/products/Saves Nails_2026.png",
-    positioning: "Grab adhesive for common interior fixing work.", description: "An SBS adhesive route for mounting and fixing construction materials without exposed nails.", environment: ["Interior"], applications: ["Mounting", "Fixing", "Interior bonding"], substrates: ["Construction materials"], benefits: ["Fast-grab positioning", "SBS chemistry", "Alternative to visible nails for suitable loads"], packSizes: ["Specification pending"], colours: ["Specification pending"], tdsUrl: "/documents/tds/resibond-saves-nails-tds-july-2026.pdf", preparation: ["Ensure substrates are clean, stable and suitably absorbent."], applicationSteps: ["Apply in spaced beads.", "Press into place and adjust promptly.", "Support until the bond can hold the item."], limitations: ["Not a substitute for structural fixings.", "Confirm load and substrate limits in the official TDS."], related: ["zero-nail", "hybrid-2-in-1"]
+    positioning: "Grab adhesive for common interior fixing work.", description: "An SBS adhesive route for mounting and fixing construction materials without exposed nails.", environment: ["Interior"], applications: ["Mounting", "Fixing", "Interior bonding", "Panel bonding", "Louver installation"], substrates: ["Metal", "Louvers", "Stone", "WPC", "Concrete", "Ceramic", "Glass", "Wood"], benefits: ["Fast-grab positioning", "SBS chemistry", "Alternative to visible nails for suitable loads"], packSizes: ["Specification pending"], colours: ["Specification pending"], tdsUrl: "/documents/tds/resibond-saves-nails-tds-july-2026.pdf", sourceUrl: "https://saathi.astraladhesives.com/", preparation: ["Ensure substrates are clean, stable and suitably absorbent."], applicationSteps: ["Apply in spaced beads.", "Press into place and adjust promptly.", "Support until the bond can hold the item."], limitations: ["Not a substitute for structural fixings.", "Confirm load and substrate limits in the official TDS."], related: ["zero-nail", "hybrid-2-in-1"]
   },
   {
     slug: "fireshield", name: "FireShield", range: "Resibond NXT", chemistry: "Acrylic", image: "/assets/products/FireShield_NXT_2026.png",
@@ -118,11 +118,21 @@ export const ranges = ["Resibond", "Resibond NXT"] as const;
 export const environments = ["Interior", "Exterior", "Specialist"] as const;
 export const applicationAliases: Record<string, string[]> = {
   "ACP joints": ["aluminium composite panel", "facade panel"],
+  "Building perimeters": ["exterior joint", "perimeter joint", "building envelope"],
   "Electronic component sealing": ["electronics", "electrical components"],
+  "Fixing": ["nail-free fixing", "wall decor fixing"],
+  "Formed-in-place gaskets": ["gasket making", "gasket replacement", "engine flange"],
   "Service penetration sealing": ["electrical cables", "cable trays", "conduits", "pipes", "penetrations"],
-  "Louver installation": ["louvre", "louvers", "louver bonding"],
+  "Interior bonding": ["indoor bonding", "interior adhesive"],
+  "Louver installation": ["louvre", "louvers", "louver bonding", "decorative louver"],
+  "Mirror installation": ["mirror backing", "back-coated glass", "mirror mounting"],
+  "Mounting": ["wall panel", "panel fixing", "nail-free fixing", "decorative panel"],
+  "Sanitary sealing": ["washbasin to wall", "basin sealing", "sanitary joint"],
   "Skirting installation": ["skirting board", "baseboard"],
+  "Stone bonding": ["stone fixing", "stone adhesive"],
   "UPVC doors and windows": ["uPVC frames", "PVC windows"],
+  "Window-frame sealing": ["window perimeter", "window sealing"],
+  "Wood bonding": ["wood fixing", "wood adhesive"],
 };
 export const substrateAliases: Record<string, string[]> = {
   ACP: ["aluminium composite panel", "acp sheet"],

@@ -36,7 +36,7 @@ export function SurfaceSelector() {
       <div className="surface-selector-intro">
         <span className="section-index">Surface matching</span>
         <h2 id="surface-selector-title">Select two surfaces.</h2>
-        <p>Select both surfaces and the type of work to see the spreadsheet&apos;s recommendations in ranked order.</p>
+        <p>Select both surfaces and the type of work to see recommendations aligned with the Astral Adhesives Saathi selection guide.</p>
       </div>
 
       <div className="surface-selector-workspace">
@@ -55,11 +55,12 @@ export function SurfaceSelector() {
         <div className={`surface-result ${match ? "ready" : ""}`} aria-live="polite">
           {match ? <>
             <div><span>Recommended order</span><strong>{surface1} → {surface2}</strong></div>
-            <ol>{match.recommendations.map((name) => {
+            <ol>{match.recommendations.map((name, index) => {
               const slug = selectorProductSlugs[name];
-              return <li key={name}><b>{name}</b>{slug ? <Link href={`/products/${slug}`}>View product <span aria-hidden>→</span></Link> : <Link href={`/contact?source=product-selector&product=${encodeURIComponent(name)}`}>Ask about this product <span aria-hidden>→</span></Link>}</li>;
+              return <li key={name}><div className="surface-result-product"><b>{name}</b><small>{index === 0 ? "Primary recommendation" : `Alternative ${index}`}</small></div>{slug ? <Link href={`/products/${slug}`}>View product <span aria-hidden>→</span></Link> : <Link href={`/contact?source=product-selector&product=${encodeURIComponent(name)}`}>Ask about this product <span aria-hidden>→</span></Link>}</li>;
             })}</ol>
-            <p>Confirm final suitability against the current technical data sheet and actual site conditions.</p>
+            <p>Recommended because these products are mapped to {application.toLowerCase()} between {surface1} and {surface2}. Confirm final suitability against the current technical data sheet and actual site conditions.</p>
+            <p className="finder-source-note">Selection logic aligned with the <a href="https://saathi.astraladhesives.com/" target="_blank" rel="noreferrer">Astral Adhesives Saathi guide ↗</a>.</p>
           </> : <p>{surface1 ? "Choose the second surface to see ranked products." : "Start with the job type, then choose both surfaces."}</p>}
         </div>
       </div>

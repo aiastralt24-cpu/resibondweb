@@ -70,7 +70,6 @@ export default function HomePage() {
         </div>
         <Link className="shade-feature-product" href="/products/neutral-3010" aria-label="View Neutral 3010 product details">
           <Image src="/assets/products/Neutral 3010_2026.png" alt="Resibond Neutral 3010 sealant cartridge" width={420} height={880} />
-          <span>View product <b aria-hidden="true">↗</b></span>
         </Link>
       </section>
       <section className="section-shell"><div className="section-heading"><span className="section-index">Featured range</span><h2>Different products for different jobs.</h2><Link className="text-link" href="/products">View all products →</Link></div><div className="product-grid">{featured.map((product) => <ProductCard key={product.slug} product={product} context="homepage" />)}</div></section>
