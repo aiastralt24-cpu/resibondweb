@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { applicationAliases, applications, products, slugify } from "@/lib/catalog";
 import { ApplicationDirectory, type ApplicationEntry } from "./application-directory";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Sealant Applications",
@@ -33,5 +34,5 @@ export default function Page() {
     };
   });
 
-  return <ApplicationDirectory entries={entries} />;
+  return <><Breadcrumbs backHref="/products" backLabel="Products" items={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "By application" }]} /><ApplicationDirectory entries={entries} /></>;
 }

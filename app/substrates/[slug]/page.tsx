@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-json-ld";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
 import { ProductCard } from "@/components/product-card";
 import { products, slugify, substrates } from "@/lib/catalog";
@@ -28,7 +29,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Substrates", path: "/substrates" }, { name: label, path: `/substrates/${slugify(label)}` }]} />
     <JsonLd data={{ "@context": "https://schema.org", "@type": "ItemList", name: `Resibond products associated with ${label}`, itemListElement: matches.map((product, index) => ({ "@type": "ListItem", position: index + 1, url: `${base}/products/${product.slug}`, name: product.name })) }} />
     <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: item.a } })) }} />
-    <div className="breadcrumbs"><Link href="/">Home</Link><span>/</span><Link href="/substrates">Substrates</Link><span>/</span><span>{label}</span></div>
+    <Breadcrumbs backHref="/substrates" backLabel="Substrates" items={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "By substrate", href: "/substrates" }, { label }]} />
     <header className="page-hero"><span className="section-index">Substrate guide</span><h1>Product routes associated with {label.toLowerCase()}.</h1><p>Use this directory for initial selection. Substrate condition, coatings, movement and exposure can change the final specification.</p></header>
     <section className="section-shell"><div className="product-grid">{matches.map((product) => <ProductCard key={product.slug} product={product} />)}</div></section>
     <section className="product-section tinted"><div className="section-heading"><span className="section-index">Selection map</span><h2>Routes currently connected to {label.toLowerCase()}.</h2></div><div className="data-columns"><div><h3>Chemistries</h3>{chemistryRoutes.map((item) => <Link key={item} href={`/chemistries/${slugify(item)}`}>{item} →</Link>)}</div><div><h3>Environments</h3>{environments.map((item) => <span key={item}>{item}</span>)}</div><div><h3>Applications</h3>{relatedApplications.slice(0, 8).map((item) => <Link key={item} href={`/applications/${slugify(item)}`}>{item} →</Link>)}</div></div></section>

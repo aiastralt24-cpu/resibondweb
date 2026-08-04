@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { products, slugify, substrateAliases, substrates } from "@/lib/catalog";
 import { SubstrateDirectory } from "@/components/substrate-directory";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Sealants by Substrate",
@@ -18,5 +19,5 @@ export default function Page() {
       .map((product) => ({ name: product.name, slug: product.slug })),
   }));
 
-  return <SubstrateDirectory entries={entries} />;
+  return <><Breadcrumbs backHref="/products" backLabel="Products" items={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "By substrate" }]} /><SubstrateDirectory entries={entries} /></>;
 }

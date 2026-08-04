@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/json-ld";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-json-ld";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ProductCard } from "@/components/product-card";
 import { ProductPack } from "@/components/product-pack";
 import { TdsGate } from "@/components/tds-gate";
@@ -46,7 +47,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     <JsonLd data={{ "@context": "https://schema.org", "@type": "Product", name: product.name, url:`${process.env.NEXT_PUBLIC_SITE_URL||"http://localhost:3000"}/products/${product.slug}`, brand: { "@type": "Brand", name: product.range }, ...(product.image ? { image: `${process.env.NEXT_PUBLIC_SITE_URL||"http://localhost:3000"}${product.image}` } : {}), description: product.description, category: `${product.chemistry} sealant or adhesive`,additionalProperty:[{ "@type":"PropertyValue",name:"Chemistry",value:product.chemistry},{"@type":"PropertyValue",name:"Environment",value:product.environment.join(", ")}] }} />
     <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faq.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) }} />
     <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Products", path: "/products" }, { name: product.name, path: `/products/${product.slug}` }]} />
-    <div className="breadcrumbs"><Link href="/">Home</Link><span>/</span><Link href="/products">Products</Link><span>/</span><span>{product.name}</span></div>
+    <Breadcrumbs backHref="/products" backLabel="Products" items={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: product.name }]} />
     <section className="product-hero"><div className="product-hero-image"><ProductPack name={product.name} image={product.image} width={420} height={820} priority /></div><div className="product-hero-copy"><div className="product-meta"><span>{product.range}</span><span>{product.chemistry}</span><span>{product.environment.join(" · ")}</span></div><h1>{product.name}</h1><p className="product-positioning">{product.positioning}</p><p>{product.description}</p><div className="actions"><Link className="button primary" href={`/contact?product=${product.slug}`}>Enquire about this product →</Link>{product.tdsUrl?<TdsGate product={product.slug} name={product.name} className="button secondary"/>:<a className="button secondary" href="#technical">View product details ↓</a>}</div></div></section>
     <nav className="sticky-product-nav" aria-label="Product page sections"><a href="#overview">Overview</a>{product.slug === "neutral-3010" && <a href="#colours">Colours</a>}<a href="#applications">Applications</a><a href="#how-to-use">How to use</a><a href="#technical">Technical</a><a href="#faq">FAQs</a></nav>
     <section id="overview" className="product-section split"><div><span className="section-index">Why this product</span><h2>{product.positioning}</h2></div><ul className="feature-list">{product.benefits.map((item) => <li key={item}>{item}</li>)}</ul></section>

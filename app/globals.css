@@ -59,3 +59,19 @@
   *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
   .button:hover,.header-cta:hover,.product-card:hover,.product-card:hover .product-image img,.substrate-rows a:hover svg,.application-row:hover svg{transform:none!important}
 }
+
+/* Consistent catalogue orientation: hierarchy on desktop, direct back action on mobile. */
+.breadcrumbs{min-height:58px;align-items:center;background:#fff;color:var(--quiet)}
+.breadcrumbs ol{display:flex;align-items:center;gap:0;margin:0;padding:0;list-style:none}
+.breadcrumbs li{display:flex;align-items:center}
+.breadcrumbs li+li:before{content:"/";margin:0 11px;color:#a69f94}
+.breadcrumbs a{color:var(--navy);font-weight:700}
+.breadcrumbs a:hover{text-decoration:underline;text-underline-offset:4px}
+.breadcrumbs [aria-current="page"]{color:var(--soft)}
+.breadcrumb-back{display:none}
+
+@media(max-width:680px){
+  .breadcrumbs{min-height:54px;padding-block:14px}
+  .breadcrumbs ol{display:none}
+  .breadcrumb-back{display:inline-flex;align-items:center;min-height:26px}
+}

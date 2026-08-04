@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { products, ranges, slugify } from "@/lib/catalog";
 
 export const metadata: Metadata = {
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return <>
+    <Breadcrumbs backHref="/products" backLabel="Products" items={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "By range" }]} />
     <header className="page-hero compact-page-hero"><span className="section-index">Range directory</span><h1>Two ranges. One application-led system.</h1><p>Explore the core Resibond range and the application-specific Resibond NXT portfolio.</p></header>
     <section className="section-shell"><div className="directory-grid">{ranges.map((range) => {
       const matches = products.filter((product) => product.range === range);

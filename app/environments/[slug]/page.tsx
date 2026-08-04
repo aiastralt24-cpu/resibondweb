@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-json-ld";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
 import { ProductCard } from "@/components/product-card";
 import { environments, products, slugify } from "@/lib/catalog";
@@ -20,7 +21,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   return <>
     <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Environments", path: "/environments" }, { name: environment, path: `/environments/${slugify(environment)}` }]} />
     <JsonLd data={{ "@context": "https://schema.org", "@type": "CollectionPage", name: `${environment} Resibond products`, url: `${base}/environments/${slugify(environment)}`, mainEntity: { "@type": "ItemList", itemListElement: matches.map((product, index) => ({ "@type": "ListItem", position: index + 1, name: product.name, url: `${base}/products/${product.slug}` })) } }} />
-    <div className="breadcrumbs"><Link href="/">Home</Link><span>/</span><Link href="/environments">Environments</Link><span>/</span><span>{environment}</span></div>
+    <Breadcrumbs backHref="/environments" backLabel="Environments" items={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "By environment", href: "/environments" }, { label: environment }]} />
     <header className="page-hero compact-page-hero"><span className="section-index">{matches.length} mapped products</span><h1>{environment} product routes.</h1><p>Use exposure as an initial filter. Final selection still depends on the joint, substrates, movement and current technical data.</p></header>
     <section className="section-shell"><div className="product-grid">{matches.map((product) => <ProductCard key={product.slug} product={product} />)}</div></section>
   </>;
