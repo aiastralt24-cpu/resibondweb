@@ -80,12 +80,14 @@ export function SubstrateDirectory({ entries }: { entries: SubstrateEntry[] }) {
   const visibleCount = grouped.reduce((count, family) => count + family.entries.length, 0);
 
   return <div className="substrate-directory-page">
-    <header className="substrate-directory-hero">
-      <div>
+    <header className="internal-page-hero substrate-directory-hero" data-inner-page-hero>
+      <div className="internal-page-hero__copy">
+        <span className="section-index">Substrate directory · {entries.length} surfaces</span>
         <h1>Start with the surface.</h1>
         <p>Choose the material you need to seal or bond. We’ll show the current Resibond product routes associated with it.</p>
       </div>
-      <div className="substrate-search-panel">
+    </header>
+    <section className="directory-tools-band substrate-search-panel" aria-label="Search substrate directory">
         <label>
           <span className="sr-only">Search surfaces or materials</span>
           <SearchIcon />
@@ -93,8 +95,7 @@ export function SubstrateDirectory({ entries }: { entries: SubstrateEntry[] }) {
           {query ? <button type="button" onClick={() => setQuery("")} aria-label="Clear search">Clear</button> : null}
         </label>
         <p aria-live="polite"><strong>{visibleCount}</strong> {visibleCount === 1 ? "surface" : "surfaces"}{query ? " found" : ""}</p>
-      </div>
-    </header>
+    </section>
 
     <section className="substrate-family-list" aria-label="Substrates grouped by material family">
       {grouped.map((family) => <section className="substrate-family" key={family.name}>

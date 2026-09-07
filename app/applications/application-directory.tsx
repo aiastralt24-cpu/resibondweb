@@ -39,19 +39,22 @@ export function ApplicationDirectory({ entries }: { entries: ApplicationEntry[] 
   }), [category, deferredQuery, entries]);
 
   return <>
-    <header className="applications-hero">
-      <div>
-        <h1>Find the right solution for the job.</h1>
+    <header className="internal-page-hero applications-hero" data-inner-page-hero>
+      <div className="internal-page-hero__copy">
+        <span className="section-index">Application directory · {entries.length} jobs</span>
+        <h1>Find by application.</h1>
         <p>Search by application, surface or project need.</p>
+      </div>
+    </header>
+
+    <section className="directory-tools-band application-tools-band" aria-label="Search application directory">
         <label className="application-search">
           <span className="sr-only">Search applications</span>
           <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" /><path d="m16 16 5 5" /></svg>
           <input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search applications" />
           <span className="search-arrow"><Arrow /></span>
         </label>
-      </div>
-      <div className="hero-joint" aria-hidden="true"><span /><span /><span /></div>
-    </header>
+    </section>
 
     <nav className="application-categories" aria-label="Application categories">
       {categories.map((item) => <button key={item} className={category === item ? "active" : ""} onClick={() => setCategory(item)}>{item}</button>)}
@@ -63,7 +66,7 @@ export function ApplicationDirectory({ entries }: { entries: ApplicationEntry[] 
         {popular.map((entry, index) => {
           const product = entry.products[0];
           return <Link className={`popular-application popular-${index + 1}`} href={`/applications/${entry.slug}`} key={entry.slug}>
-            <div className="popular-visual">{product?.image ? <Image src={product.image} alt="" width={160} height={300} priority={index === 0} /> : <span>{String(index + 1).padStart(2, "0")}</span>}</div>
+            <div className="popular-visual">{product?.image ? <Image src={product.image} alt={`${product.name} product pack`} width={160} height={300} priority={index === 0} /> : <span>{String(index + 1).padStart(2, "0")}</span>}</div>
             <div><span>{entry.category}</span><h3>{entry.name}</h3><p>{applicationDescription(entry)}</p><strong>Explore application <Arrow /></strong></div>
           </Link>;
         })}

@@ -1,4 +1,5 @@
-const base = process.env.SITE_AUDIT_URL || "http://127.0.0.1:3000";
+const port = process.env.PORT || "9090";
+const base = process.env.SITE_AUDIT_URL || `http://127.0.0.1:${port}`;
 const strict = process.env.CONTENT_AUDIT_STRICT === "1";
 
 async function text(path) {

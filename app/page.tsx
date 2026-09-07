@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { HomeHeroSlider } from "@/components/home-hero-slider";
 import { ProductCard } from "@/components/product-card";
 import { JsonLd } from "@/components/json-ld";
 import { products } from "@/lib/catalog";
@@ -31,17 +32,7 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={{ "@context": "https://schema.org", "@type": "Brand", name: "Resibond", slogan: "The Seal Specialist", url: siteUrl, logo: `${siteUrl}/assets/logos/resibond-logo-blue-transparent.png`, parentOrganization: { "@type": "Organization", name: "Astral Adhesives", url: "https://www.astraladhesives.com/" } }} />
-      <section className="hero">
-        <div className="hero-copy">
-          <span className="hero-endorsement">Resibond · From Astral Adhesives</span>
-          <h1>The Seal Specialist.</h1>
-          <p>Professional sealing and bonding systems for critical joints across homes, projects and specialist applications.</p>
-          <div className="actions"><Link className="button primary" href="/product-finder">Find your product <span>→</span></Link><Link className="button secondary" href="/products">Explore the range <span>→</span></Link></div>
-        </div>
-        <div className="hero-products hero-range-shot">
-          <Image className="hero-group-shot" src="/assets/products/Resibond-range-groupshot.png" alt="Resibond sealants and adhesives product range" width={1794} height={1118} priority />
-        </div>
-      </section>
+      <HomeHeroSlider />
       <section className="finder-band">
         <div className="finder-intro"><span className="section-index">Find by application</span><h2>What are you working on?</h2><p>Choose the job first. We will connect it to the relevant Resibond products, surfaces and technical guidance.</p><Link className="finder-all-link" href="/solutions">Explore all solution guides <span aria-hidden>→</span></Link></div>
         <div className="finder-links">
@@ -56,8 +47,8 @@ export default function HomePage() {
       <section className="shade-feature" aria-labelledby="shade-feature-title">
         <div className="shade-feature-copy">
           <span>Neutral 3010</span>
-          <h2 id="shade-feature-title">100+ shades for precise finishing.</h2>
-          <p>A broader shade system helps architects, applicators, and contractors match joints to surfaces with less compromise.</p>
+          <h2 id="shade-feature-title">A broad shade range for precise finishing.</h2>
+          <p>Available shade options help architects, applicators, and contractors match joints to surfaces with less compromise. Confirm final availability with Resibond before specification.</p>
           <div className="shade-swatches" aria-label="Example Neutral 3010 shades">
             <i style={{ "--swatch": "#eee8db" } as CSSProperties} />
             <i style={{ "--swatch": "#d8c3a1" } as CSSProperties} />

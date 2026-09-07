@@ -1,42 +1,50 @@
-# Design QA: Astral brand association update
+# Homepage Hero Slider — Design QA
 
-- Source visual truth: `/Users/bunny/Downloads/screencapture-beta-resibond-in-2026-07-24-19_20_28.png`
-- Source pixels: 3024 × 9924 (full-page reference capture)
-- Implementation screenshots: `/private/tmp/resibond-homepage-astral-update.png` and `/private/tmp/resibond-astral-section-update.png`
-- Implementation viewport: 1280 × 720 CSS px, device scale factor 1
-- State: homepage, default desktop state
-- Density normalization: the source was used as the full-page layout and art-direction reference; the revised implementation was inspected at its CSS viewport because this is an intentional content update, not a pixel-for-pixel clone.
+- Source visual truth: `/Users/bunny/Downloads/HERO BANNER_2X (1).jpg`
+- Implementation screenshots: `/tmp/resibond-nxt-final-blended-desktop.png`, `/tmp/resibond-nxt-final-blended-mobile.png`
+- Combined comparison: `/tmp/resibond-hero-design-qa-comparison.png`
+- Desktop viewport: 1440 × 1000 CSS px; implementation hero: 1440 × 920 CSS px
+- Mobile viewport: 390 × 844 CSS px; implementation hero: 390 × 960 CSS px
+- Source pixels: 3840 × 2160 (2× campaign artwork; normalized to 720 × 405 in comparison)
+- Implementation capture: 1440 × 1000 at browser capture density; normalized to 720 px wide in comparison
+- State: Resibond NXT slide active after transition
 
 ## Full-view comparison evidence
 
-The existing navy, warm white and gold system; condensed display typography; two-column hero; supplied product-range group shot; application directory; product merchandising; enquiry band; and footer hierarchy remain consistent with the supplied homepage reference. The hero copy has intentionally changed to the approved positioning, and a new Astral credibility section has been introduced before the enquiry band.
-
-## Focused-region comparison evidence
-
-- Hero: inspected in `/private/tmp/resibond-homepage-astral-update.png`. The new endorsement line, headline and supporting copy fit the existing left column without colliding with the supplied product group shot. Both primary actions remain above the fold at 1280 × 720.
-- Astral story: inspected in `/private/tmp/resibond-astral-section-update.png`. The new two-column section follows the existing editorial grid, uses established color tokens and keeps the evidence cards readable without introducing a conflicting visual language.
-- About page: inspected in the browser at 1280 × 720. The endorsement, brand positioning and Astral story render without overflow.
-- Mobile: inspected at 390 × 844. Hero copy and actions stack correctly; no horizontal overflow was visible.
+The implementation preserves the source's deep-blue field, four-cartridge hierarchy, NXT lockup, specialist positioning, and gold accent. The layout intentionally converts baked banner text into responsive HTML and replaces unverified proof claims with functional CTAs. Desktop retains the source's products-left/copy-right composition; mobile changes to copy-first/products-second for legibility and conversion.
 
 ## Required fidelity surfaces
 
-- Fonts and typography: passed. Existing Archivo and Barlow Condensed hierarchy is preserved; the shorter brand headline improves wrapping on desktop and mobile.
-- Spacing and layout rhythm: passed. New sections use the site's established responsive paddings, grid gaps and border rhythm.
-- Colors and visual tokens: passed. All new UI uses the existing navy, deep blue, gold, bone and line tokens.
-- Image quality and asset fidelity: passed. The supplied Resibond range group shot and exact product packaging remain unchanged; no brand marks or product labels were recreated.
-- Copy and content: passed. “The Seal Specialist” is consistently presented, the Astral relationship is explicit, and corporate claims are limited to official Astral source material.
+- Typography: Barlow Condensed display hierarchy matches the established Resibond website and preserves the source's condensed industrial character. Copy remains live, responsive, and readable.
+- Spacing and layout: desktop composition matches the source's two-part balance; mobile stacks content without horizontal overflow. Slider height remains stable between slides.
+- Colors and tokens: NXT navy is matched to the official logo asset (`#073356`); gold uses the site's approved brand token.
+- Image quality: the product stage is an exact, high-quality crop of the supplied campaign artwork, preserving its bottle shapes, nozzles, proportions, lighting, spacing and podiums. The official NXT logo remains a separate source asset. No product or logo is recreated in CSS.
+- Copy and content: the NXT positioning is preserved. “India's Widest Range” and “30+ Years of Sealing Expertise” are intentionally omitted because approval was not provided; functional CTAs replace them.
 
-## Findings
+## Focused-region evidence
 
-No actionable P0, P1 or P2 issues remain in the implemented scope.
+The full-width normalized comparison keeps the official packaging labels and logo large enough to inspect, so a separate focused crop was not necessary. Product transparency, relative scale, logo crop, and CTA placement were checked at desktop and mobile sizes.
 
 ## Comparison history
 
-- Initial browser capture exposed a full-page screenshot rendering limitation in the in-app browser, not a page defect. DOM inspection and scoped viewport captures confirmed that all homepage sections render.
-- Desktop and mobile scoped captures showed no content collision, overflow or broken hierarchy, so no corrective design iteration was required.
+1. P2 — Sanitary Super White used an opaque-background PNG, producing a white rectangle on navy. Fixed by switching to the approved transparent `sanitary-super-white-nxt-2026-v3.png`; post-fix evidence shows no backplate.
+2. P2 — Official square NXT logo contained excessive built-in navy margins. Fixed with a non-destructive crop frame and matched the slide background to the logo's sampled navy; post-fix evidence shows a compact, integrated lockup.
+3. P1 — The reconstructed catalogue cut-outs did not match the supplied campaign group shot. Replaced them with an exact source-artwork product crop. A first responsive attempt exposed baked-in banner copy on mobile; the final 2100 × 2160 product-only crop removes that copy while retaining all four cartridges. Desktop and 390 × 844 mobile evidence confirm the corrected asset.
+4. P1 — The product crop initially read as a rectangular card inside the hero. Fixed by making the desktop artwork full-bleed, matching the NXT background, feathering its joining edge, and using a top fade in the stacked mobile composition. Post-fix captures show a continuous stage without a hard box boundary.
 
-## Follow-up polish
+## Interaction and runtime checks
 
-- P3: Application-specific photographic hero scenes remain a separate asset-production phase. They should be piloted with Neutral 3010 and Zero Nail while retaining the supplied cartridge artwork exactly.
+- Automatic 8-second slide change: passed
+- Direct slide controls: passed
+- Keyboard ArrowRight navigation: passed
+- NXT primary CTA to `/brands/resibond-nxt`: passed
+- Responsive mobile state and zero horizontal overflow: passed
+- Console error/warning check: passed
+- Reduced-motion fallback is present in CSS and disables slide/product transitions
+- NXT choreography is text-first, followed by the complete supplied group shot; the group uses a one-time rise/brightness settle and subtle transform-only ambient movement
+
+## Findings
+
+No actionable P0, P1, or P2 findings remain. The missing campaign proof claims are an intentional content-safety deviation pending brand approval.
 
 final result: passed

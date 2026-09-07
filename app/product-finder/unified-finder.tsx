@@ -23,8 +23,8 @@ export function UnifiedFinder({ products }: { products: Product[] }) {
         </div>
       </div>
 
-      <div className="finder-mode-panel" id="finder-panel-surfaces" role="tabpanel" aria-labelledby="finder-tab-surfaces" hidden={mode !== "surfaces"}><SurfaceSelector /></div>
-      <div className="finder-mode-panel" id="finder-panel-application" role="tabpanel" aria-labelledby="finder-tab-application" hidden={mode !== "application"}><Finder products={products} /></div>
+      <div className="finder-mode-panel" id="finder-panel-surfaces" role="tabpanel" aria-labelledby="finder-tab-surfaces" hidden={mode !== "surfaces"}>{mode === "surfaces" ? <div className="finder-panel-enter"><SurfaceSelector /></div> : null}</div>
+      <div className="finder-mode-panel" id="finder-panel-application" role="tabpanel" aria-labelledby="finder-tab-application" hidden={mode !== "application"}>{mode === "application" ? <div className="finder-panel-enter"><Finder products={products} /></div> : null}</div>
     </div>
   );
 }

@@ -5,6 +5,33 @@ import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+type SplitTextRecord = { element: HTMLElement; text: string };
+
+function splitMaskedWords(element: HTMLElement, records: SplitTextRecord[]) {
+  if (element.dataset.maskedRevealReady === "true") return;
+  const text = element.textContent?.trim() ?? "";
+  if (!text) return;
+  records.push({ element, text });
+  element.textContent = "";
+  element.setAttribute("aria-label", text);
+  text.split(/(\s+)/).forEach((part) => {
+    if (!part.trim()) {
+      element.appendChild(document.createTextNode(part));
+      return;
+    }
+    const mask = document.createElement("span");
+    const word = document.createElement("span");
+    mask.className = "word-mask";
+    mask.setAttribute("aria-hidden", "true");
+    word.className = "word";
+    word.textContent = part;
+    mask.appendChild(word);
+    element.appendChild(mask);
+  });
+  element.dataset.maskedRevealReady = "true";
+  element.classList.add("is-split");
+}
+
 const revealGroups = [
   ".finder-links > a",
   ".product-grid > *",
@@ -33,7 +60,6 @@ const revealBlocks = [
   ".portfolio-brand-grid",
   ".astral-business-heading",
   ".contact-enquiry > *",
-  ".substrate-directory-hero > *",
   ".product-hero-image",
   ".product-hero-copy",
   ".product-section.split > *",
@@ -80,18 +106,35 @@ export function SiteMotion() {
     productSections.forEach((section) => sectionObserver?.observe(section));
 
     const media = gsap.matchMedia();
+    const splitRecords: SplitTextRecord[] = [];
     const context = gsap.context(() => {
       media.add("(prefers-reduced-motion: no-preference)", () => {
-        const heroTimeline = gsap.timeline({ defaults: { ease: "expo.out" } });
-        const hero = document.querySelector(".hero");
+        const hero = document.querySelector<HTMLElement>("[data-motion-hero]");
         if (hero) {
+          const compact = window.matchMedia("(max-width: 760px)").matches;
+          const headline = hero.querySelector<HTMLElement>("[data-masked-reveal]");
+          if (headline) splitMaskedWords(headline, splitRecords);
+          const words = headline?.querySelectorAll<HTMLElement>(".word");
+          const heroTimeline = gsap.timeline({ defaults: { ease: "expo.out" } });
           heroTimeline
-            .fromTo(".hero-endorsement", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.55 })
-            .fromTo(".hero-copy h1", { autoAlpha: 0, y: 34 }, { autoAlpha: 1, y: 0, duration: 0.85 }, "-=0.34")
-            .fromTo(".hero-copy > p", { autoAlpha: 0, y: 22 }, { autoAlpha: 1, y: 0, duration: 0.65 }, "-=0.5")
-            .fromTo(".hero-copy .actions", { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.55 }, "-=0.4")
-            .fromTo(".hero-group-shot", { autoAlpha: 0, y: 38, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 1.05 }, "-=0.75");
+            .fromTo(hero.querySelector(".hero-gold-plane"), { scaleX: 0 }, { scaleX: 1, duration: compact ? 0.65 : 0.9, ease: "power3.inOut" })
+            .fromTo(hero.querySelector(".hero-endorsement"), { autoAlpha: 0, y: 12 }, { autoAlpha: 1, y: 0, duration: compact ? 0.35 : 0.5 }, "-=0.48");
+          if (words?.length) heroTimeline.fromTo(words, { yPercent: 110 }, { yPercent: 0, duration: compact ? 0.58 : 0.78, stagger: compact ? 0.025 : 0.04 }, "-=0.3");
+          heroTimeline
+            .fromTo(hero.querySelector(".hero-copy > p"), { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: compact ? 0.4 : 0.58 }, "-=0.5")
+            .fromTo(hero.querySelector(".hero-copy .actions"), { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: compact ? 0.38 : 0.52 }, "-=0.38")
+            .fromTo(hero.querySelector(".hero-group-shot"), { autoAlpha: 0, y: compact ? 24 : 44, scale: 0.965 }, { autoAlpha: 1, y: 0, scale: 1, duration: compact ? 0.72 : 1 }, "-=0.08")
+            .fromTo(hero.querySelector(".hero-stage-number"), { autoAlpha: 0, x: 12 }, { autoAlpha: 1, x: 0, duration: 0.4 }, "-=0.62");
         }
+
+        document.querySelectorAll<HTMLElement>("[data-inner-page-hero]").forEach((innerHero) => {
+          const compact = window.matchMedia("(max-width: 700px)").matches;
+          const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+          timeline
+            .fromTo(innerHero.querySelector(".section-index"), { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: compact ? 0.34 : 0.42 })
+            .fromTo(innerHero.querySelector("h1"), { autoAlpha: 0, y: compact ? 24 : 34, clipPath: "inset(0 0 22% 0)" }, { autoAlpha: 1, y: 0, clipPath: "inset(0 0 0% 0)", duration: compact ? 0.68 : 0.84 }, "-=0.18")
+            .fromTo(innerHero.querySelector(".internal-page-hero__copy > p"), { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: compact ? 0.42 : 0.54 }, "-=0.42");
+        });
 
         revealBlocks.forEach((selector) => {
           gsap.utils.toArray<HTMLElement>(selector).forEach((element) => {
@@ -144,6 +187,12 @@ export function SiteMotion() {
       if (frame) window.cancelAnimationFrame(frame);
       context.revert();
       media.revert();
+      splitRecords.forEach(({ element, text }) => {
+        element.textContent = text;
+        element.removeAttribute("aria-label");
+        delete element.dataset.maskedRevealReady;
+        element.classList.remove("is-split");
+      });
     };
   }, [pathname]);
 

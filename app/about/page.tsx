@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { InternalPageHero } from "@/components/internal-page-hero";
 
 export const metadata:Metadata={title:"About Resibond & Astral",description:"Meet Resibond, the seal specialist from Astral Adhesives, and learn about the Astral building-materials group.",alternates:{canonical:"/about"}};
 
@@ -13,12 +14,8 @@ const astralBusinesses=[
 ];
 
 export default function Page(){return <>
-  <header className="page-hero about-hero">
-    <span className="section-index">Resibond · From Astral Adhesives</span>
-    <h1>The Seal Specialist.</h1>
-    <p>An application-led range of professional sealants and adhesives for residential, commercial and specialist work.</p>
-  </header>
-  <section className="content-page about-intro"><div><span className="section-index">About Resibond</span><h2>Products organised around the job.</h2></div><article><p>Resibond brings specialist sealing and bonding products into one practical system. The range spans acrylic, acetoxy, neutral, hybrid and SBS technologies and can be explored by product, chemistry, application or substrate.</p><p>Product information is published only where supported by current official material. Compatibility, conditions and limitations should always be confirmed in the latest technical data sheet.</p><p><Link className="button primary" href="/products">Explore the product range →</Link></p></article></section>
+  <InternalPageHero eyebrow="Resibond · From Astral Adhesives" title="The Seal Specialist." description="An application-led range of professional sealants and adhesives for residential, commercial and specialist work." />
+  <section className="content-page about-intro"><div><span className="section-index">About Resibond</span><h2>Products organised around the job.</h2></div><article><p>Resibond brings specialist sealing and bonding products into one practical system. The range spans silicone, hybrid, acrylic and SBS technologies and can be explored by product, chemistry, application or substrate.</p><p>Product information is published only where supported by current official material. Compatibility, conditions and limitations should always be confirmed in the latest technical data sheet.</p><p><Link className="button primary" href="/products">Explore the product range →</Link></p></article></section>
   <section className="about-astral" id="astral-adhesives" aria-labelledby="about-astral-title">
     <div className="about-astral-heading"><div className="astral-adhesives-lockup"><Image className="astral-adhesives-mark" src="/assets/logos/astral-adhesives-logo-white-aligned.png" alt="Astral Adhesives" width={200} height={60}/></div><h2 id="about-astral-title">Bonding innovation with quality.</h2></div>
     <article><p>Astral Adhesives manufactures a diversified range of adhesives, sealants, putties and construction chemicals. Its official company information highlights backward integration, Good Manufacturing Practices, product consistency and a nationwide network of more than 1,800 distributors.</p><p>Astral Adhesives began more than two decades ago in specialty chemicals and is part of Astral Limited&apos;s growing building-materials portfolio.</p><div className="about-source-links"><a href="https://www.astraladhesives.com/" target="_blank" rel="noreferrer">Visit Astral Adhesives ↗</a><a href="https://www.astralltd.com/astral-adhesives/" target="_blank" rel="noreferrer">View Adhesives at Astral Limited ↗</a></div></article>

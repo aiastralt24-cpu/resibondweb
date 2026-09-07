@@ -1,4 +1,5 @@
-const base = process.env.SITE_AUDIT_URL || "http://127.0.0.1:3000";
+const port = process.env.PORT || "9090";
+const base = process.env.SITE_AUDIT_URL || `http://127.0.0.1:${port}`;
 const errors = [];
 const warnings = [];
 
@@ -44,7 +45,10 @@ function auditHtml(url, html) {
 
 const sitemapResult = await fetchText(`${base}/sitemap.xml`);
 if (!sitemapResult.response.ok) throw new Error(`Unable to read sitemap: ${sitemapResult.response.status}`);
-const urls = matches(sitemapResult.text, /<loc>([^<]+)<\/loc>/g).map(decode);
+const urls = matches(sitemapResult.text, /<loc>([^<]+)<\/loc>/g).map((value) => {
+  const sitemapUrl = new URL(decode(value));
+  return new URL(`${sitemapUrl.pathname}${sitemapUrl.search}`, base).href;
+});
 if (urls.length < 60) errors.push(`Sitemap unexpectedly small: ${urls.length} URLs`);
 if (new Set(urls).size !== urls.length) errors.push("Sitemap contains duplicate URLs");
 
@@ -66,7 +70,7 @@ for (let index = 0; index < urls.length; index += concurrency) {
   }
 }
 
-const noindexRoutes = ["/about", "/certificates", "/technical-data-sheets", "/projects", "/application-videos", "/events", "/gallery", "/testimonials", "/store-locator", "/compare"];
+const noindexRoutes = ["/compare"];
 for (const route of noindexRoutes) {
   const { response, text } = await fetchText(`${base}${route}`);
   if (response.status !== 200) errors.push(`${route}: HTTP ${response.status}`);

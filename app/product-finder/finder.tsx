@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
 import { applicationAliases, type Product } from "@/lib/catalog";
@@ -22,6 +22,13 @@ const applicationGroupOrder = [
   "Specialist systems",
   "Other applications",
 ];
+
+const preferredResultOrder: Record<string, string[]> = {
+  Mirrors: ["mirror-mount", "zero-nail", "neutral-3010"],
+  "Tinted panels": ["mirror-mount", "neutral-3010"],
+};
+
+const exteriorResultOrder = ["weather-5010", "hybrid-2-in-1", "zero-nail", "turf-grass", "saves-nails"];
 
 function applicationGroup(value: string) {
   if (/bath|basin|sink|sanitary|kitchen|gypsum|electrical/i.test(value)) return "Bathrooms & interiors";
@@ -62,7 +69,14 @@ export function Finder({ products }: { products: Product[] }) {
     () => products.filter((product) =>
       (application === "All" || product.applications.includes(application)) &&
       (environment === "All" || product.environment.includes(environment)) &&
-      (chemistry === "All" || product.chemistry === chemistry)),
+      (chemistry === "All" || product.chemistry === chemistry))
+      .sort((a, b) => {
+        const order = application !== "All" ? preferredResultOrder[application] : environment === "Exterior" ? exteriorResultOrder : undefined;
+        if (!order) return 0;
+        const aIndex = order.indexOf(a.slug);
+        const bIndex = order.indexOf(b.slug);
+        return (aIndex < 0 ? order.length : aIndex) - (bIndex < 0 ? order.length : bIndex);
+      }),
     [application, environment, chemistry, products],
   );
   const activeSelections = [
@@ -71,6 +85,21 @@ export function Finder({ products }: { products: Product[] }) {
     chemistry !== "All" ? { label: chemistry, clear: () => setChemistry("All") } : null,
   ].filter((item): item is { label: string; clear: () => void } => Boolean(item));
   const activeFilters = activeSelections.length;
+  const resultKey = [application, environment, chemistry].join("|");
+
+  useEffect(() => {
+    if (!filtersOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setFiltersOpen(false);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [filtersOpen]);
 
   const reason = (product: Product) => `Recommended because it matches ${[
     application !== "All" && application,
@@ -132,7 +161,7 @@ export function Finder({ products }: { products: Product[] }) {
                   </button>
                 </div>
               ) : null}
-              <input className="finder-search" type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search all applications" aria-label="Search applications" />
+              <input className="finder-search" type="search" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search application names" aria-label="Search applications" />
 
               {normalizedSearch ? (
                 <div className="finder-search-results" aria-live="polite">
@@ -142,7 +171,7 @@ export function Finder({ products }: { products: Product[] }) {
                       <span>{value}</span><small>{applicationGroup(value)}</small>
                     </button>
                   ))}
-                  {visibleApplications.length <= 1 ? <p>No applications found.</p> : null}
+                  {visibleApplications.filter((value) => value !== "All").length === 0 ? <p>No applications found.</p> : null}
                 </div>
               ) : (
                 <>
@@ -181,10 +210,10 @@ export function Finder({ products }: { products: Product[] }) {
           <button className="finder-apply" type="button" onClick={() => setFiltersOpen(false)}>Show {matches.length} product{matches.length === 1 ? "" : "s"}</button>
         </aside>
 
-        <div className="finder-results">
+        <div className="finder-results" aria-busy="false">
           <span className="section-index">Live recommendations</span>
           <div className="finder-results-heading">
-            <h2>{matches.length} product{matches.length === 1 ? "" : "s"} found</h2>
+            <h2 aria-live="polite" aria-atomic="true"><span key={matches.length} className="finder-count-enter">{matches.length}</span> product{matches.length === 1 ? "" : "s"} found</h2>
             {activeFilters > 0 ? <button type="button" onClick={resetFilters}>Clear filters</button> : null}
           </div>
           {activeSelections.length ? (
@@ -193,15 +222,15 @@ export function Finder({ products }: { products: Product[] }) {
             </div>
           ) : null}
           {matches.length ? (
-            <div className="product-grid">
-              {matches.map((product) => (
+            <div className="product-grid finder-results-enter" key={resultKey}>
+              {matches.map((product,index) => (
                 <div className="finder-product" key={product.slug}>
-                  <ProductCard product={product} context="finder" reason={reason(product)} />
+                  <ProductCard product={product} context="finder" reason={reason(product)} priority={index===0} />
                   <label className="compare-control"><input type="checkbox" checked={compare.includes(product.slug)} disabled={!compare.includes(product.slug) && compare.length >= 3} onChange={() => toggleCompare(product.slug)} />Compare this result</label>
                 </div>
               ))}
             </div>
-          ) : <p>No product currently matches every choice. Remove one filter or contact the Resibond team for specification support.</p>}
+          ) : <div className="finder-empty finder-results-enter" key={resultKey} role="status"><span>0 matches</span><h3>No exact combination yet.</h3><p>No product currently matches every choice. Remove one filter or contact the Resibond team for specification support.</p><button type="button" onClick={resetFilters}>Reset filters</button></div>}
         </div>
       </div>
 
