@@ -13,7 +13,7 @@ export function HomeHeroSlider() {
 
   useEffect(() => {
     if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setTimeout(() => setActive((current) => current === 0 ? 1 : 0), 6000);
+    const timer = window.setTimeout(() => setActive((current) => current === 0 ? 1 : 0), 8500);
     return () => window.clearTimeout(timer);
   }, [active, paused]);
 
@@ -31,13 +31,13 @@ export function HomeHeroSlider() {
 
   return (
     <section className={`home-hero-slider is-slide-${active + 1}`} aria-roledescription="carousel" aria-label="Resibond product ranges" onKeyDown={handleKeyDown} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false); }} onTouchStart={(event) => { touchStart.current = event.touches[0].clientX; }} onTouchEnd={handleTouchEnd}>
-      <article className={`hero hero-slide hero-slide-resibond ${active === 0 ? "active" : "inactive"}`} data-motion-hero={active === 0 ? "" : undefined} aria-hidden={active !== 0}>
+      <article className={`hero hero-slide hero-slide-resibond ${active === 0 ? "active" : "inactive"}`} aria-hidden={active !== 0}>
         <span className="hero-gold-plane" aria-hidden="true" />
         <div className="hero-copy">
           <span className="hero-endorsement">Resibond · From Astral Adhesives</span>
-          <h1 data-masked-reveal>The Seal Specialist.</h1>
+          <h1>The Seal Specialist.</h1>
           <p>Professional sealing and bonding systems for critical joints across homes, projects and specialist applications.</p>
-          <div className="actions"><Link className="button primary" href="/product-finder" tabIndex={active === 0 ? 0 : -1}>Find your product <span>→</span></Link><Link className="button secondary" href="/products" tabIndex={active === 0 ? 0 : -1}>Explore the range <span>→</span></Link></div>
+          <div className="actions"><Link className="button primary" href="/product-finder" tabIndex={active === 0 ? 0 : -1}>Find product <span>→</span></Link><Link className="button secondary" href="/products" tabIndex={active === 0 ? 0 : -1}>Explore range <span>→</span></Link></div>
         </div>
         <div className="hero-products hero-range-shot">
           <span className="hero-stage-number" aria-hidden="true">01 / 02</span>
@@ -54,7 +54,7 @@ export function HomeHeroSlider() {
           <span className="nxt-kicker">The Seal Specialist</span>
           <h2>NXT-Gen sealants for new-age needs.</h2>
           <p>A focused specialist range for fire protection, HVAC ducting, mirror installation and sanitary applications.</p>
-          <div className="actions"><Link className="button gold" href="/brands/resibond-nxt" tabIndex={active === 1 ? 0 : -1}>Explore Resibond NXT <span>→</span></Link><Link className="button nxt-secondary" href="/product-finder" tabIndex={active === 1 ? 0 : -1}>Find an NXT product <span>→</span></Link></div>
+          <div className="actions"><Link className="button gold" href="/brands/resibond-nxt" tabIndex={active === 1 ? 0 : -1}>Explore NXT <span>→</span></Link><Link className="button nxt-secondary" href="/product-finder" tabIndex={active === 1 ? 0 : -1}>Find NXT product <span>→</span></Link></div>
         </div>
       </article>
 
