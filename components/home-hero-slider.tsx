@@ -41,13 +41,13 @@ export function HomeHeroSlider() {
         </div>
         <div className="hero-products hero-range-shot">
           <span className="hero-stage-number" aria-hidden="true">01 / 02</span>
-          <Image className="hero-group-shot" src="/assets/products/Resibond-range-groupshot.png" alt="Resibond sealants and adhesives product range" width={1794} height={1118} priority />
+          <Image className="hero-group-shot" src="/assets/products/resibond-range-without-nozzles-updated.png" alt="Resibond sealants and adhesives product range without applicator nozzles" width={3574} height={1672} priority />
         </div>
       </article>
 
       <article className={`hero hero-slide hero-slide-nxt ${active === 1 ? "active" : "inactive"}`} aria-hidden={active !== 1}>
         <div className="nxt-product-stage" aria-label="Resibond NXT FireShield, Duct Seal, Mirror Mount and Sanitary Super White cartridges">
-          <Image className="nxt-hero-group-shot" src="/assets/products/resibond-nxt-product-stage-v3.jpg" alt="Resibond NXT FireShield, Duct Seal, Mirror Mount and Sanitary Super White cartridges" width={2100} height={2160} sizes="(max-width: 1100px) 100vw, 58vw" priority />
+          <Image className="nxt-hero-group-shot" src="/assets/products/resibond-nxt-home-banner-without-nozzles.jpg" alt="Resibond NXT FireShield, Duct Seal, Mirror Mount and Sanitary Super White cartridges without applicator nozzles" width={3840} height={2160} sizes="(max-width: 1100px) 100vw, 58vw" priority />
         </div>
         <div className="nxt-hero-copy">
           <div className="nxt-hero-logo-crop"><Image className="nxt-hero-logo" src="/assets/logos/RESIBOND NXT LOGO-02 1.jpg" alt="Resibond NXT" width={1181} height={1181} /></div>

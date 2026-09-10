@@ -20,10 +20,7 @@ export default async function Page({
       <section className="contact-enquiry" aria-labelledby="contact-title">
         <div className="contact-intro">
           <h1 id="contact-title">Tell us what you’re working on.</h1>
-          <p>
-            Share the surface, environment and project details. Our team will route your
-            enquiry to the right product specialist.
-          </p>
+          <p>Tell us the product, surfaces and application. We’ll direct your enquiry to the right team.</p>
           <div className="contact-response-time">
             <span aria-hidden="true" />
             Usually answered within one business day.

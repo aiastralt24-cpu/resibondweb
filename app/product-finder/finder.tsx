@@ -101,7 +101,7 @@ export function Finder({ products }: { products: Product[] }) {
     };
   }, [filtersOpen]);
 
-  const reason = (product: Product) => `Recommended because it matches ${[
+  const reason = (product: Product) => `Matches ${[
     application !== "All" && application,
     environment !== "All" && `${environment.toLowerCase()} exposure`,
     chemistry !== "All" && `${chemistry.toLowerCase()} chemistry`,
@@ -231,6 +231,7 @@ export function Finder({ products }: { products: Product[] }) {
               ))}
             </div>
           ) : <div className="finder-empty finder-results-enter" key={resultKey} role="status"><span>0 matches</span><h3>No exact combination yet.</h3><p>No product currently matches every choice. Remove one filter or contact the Resibond team for specification support.</p><button type="button" onClick={resetFilters}>Reset filters</button></div>}
+          {matches.length ? <p className="finder-results-note">Recommendations help narrow the range. Confirm final suitability against the selected product’s technical data and actual site conditions.</p> : null}
         </div>
       </div>
 

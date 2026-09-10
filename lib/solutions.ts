@@ -18,7 +18,7 @@ export const solutions: SolutionHub[] = [
     title: "Sealants and adhesives for bathrooms and wet areas",
     description: "Explore Resibond bathroom sealants for washbasins, sinks, sanitary joints, showers and wet-area gap filling.",
     intro: "Bathroom joints need more than a clean finish. They must resist moisture, accommodate small movements and remain easy to maintain around sanitary fixtures.",
-    body: "Use this guide to compare Resibond routes for sanitary sealing, washbasin-to-wall gaps, kitchen sinks and related interior wet-area applications. Final selection depends on the fixture, adjoining surface, water exposure and required finish.",
+    body: "Use this guide to compare Resibond products for sanitary sealing, washbasin-to-wall gaps, kitchen sinks and related interior wet-area applications. Final selection depends on the fixture, adjoining surface, water exposure and required finish.",
     productSlugs: ["bathmate", "sanitary-super-white", "neutral-3010"],
     applicationLabels: ["Sanitary sealing", "Kitchen sink sealing", "Washbasin-to-wall gaps", "Shower units", "Toilets", "Washbasins"],
     considerations: [
@@ -27,7 +27,7 @@ export const solutions: SolutionHub[] = [
       { title: "Fixture compatibility", text: "Confirm compatibility with ceramic, acrylic, metal, stone and sensitive finishes." },
     ],
     faqs: [
-      { q: "Which Resibond product is suitable for bathroom gaps?", a: "Bathmate is mapped to washbasin, sink and interior gap-filling applications. Sanitary Super White and Neutral 3010 cover other sanitary or glazing-related routes. Confirm the final choice from the current TDS." },
+      { q: "Which Resibond product is suitable for bathroom gaps?", a: "Bathmate is recommended for washbasin, sink and interior gap-filling applications. Sanitary Super White and Neutral 3010 cover other sanitary or glazing-related applications. Confirm the final choice from the current TDS." },
       { q: "How long should a bathroom sealant cure before water exposure?", a: "Cure time depends on product, bead size and site conditions. Bathmate guidance calls for at least 24 hours before water exposure; always follow the current product TDS." },
       { q: "Can every bathroom sealant be used on stone?", a: "No. Natural stone and sensitive finishes may require a compatible neutral-cure product and prior testing. Review the product TDS before application." },
     ],
@@ -37,7 +37,7 @@ export const solutions: SolutionHub[] = [
     title: "Sealants for doors, windows and perimeter gaps",
     description: "Find Resibond sealants for UPVC windows, aluminium frames, sills, wall junctions and door or window perimeter gaps.",
     intro: "Door and window joints connect different materials while remaining exposed to movement, air leakage, rain and finishing requirements.",
-    body: "This hub brings together product routes for UPVC frames, aluminium and glass junctions, window sills, plinths and frame-to-wall gaps. Match the sealant to the substrate, joint movement, exterior exposure and whether the finished joint must be painted.",
+    body: "This guide brings together products for UPVC frames, aluminium and glass junctions, window sills, plinths and frame-to-wall gaps. Match the sealant to the substrate, joint movement, exterior exposure and whether the finished joint must be painted.",
     productSlugs: ["doors-windows", "gp-100", "premium-gp-1010", "neutral-3010"],
     applicationLabels: ["UPVC doors and windows", "Window sills and plinths", "Window-frame sealing", "Window-to-wall joints", "Air-conditioner edge gaps"],
     considerations: [
@@ -46,7 +46,7 @@ export const solutions: SolutionHub[] = [
       { title: "Paintable finish", text: "Use an appropriate acrylic route when the cured joint needs to accept paint." },
     ],
     faqs: [
-      { q: "What sealant should be used around UPVC windows?", a: "Doors & Windows is mapped to UPVC frame and masonry gaps, while Neutral 3010 covers additional UPVC and glazing routes. Exposure and joint movement determine final suitability." },
+      { q: "What sealant should be used around UPVC windows?", a: "Doors & Windows is recommended for UPVC frame and masonry gaps, while Neutral 3010 covers additional UPVC and glazing applications. Exposure and joint movement determine final suitability." },
       { q: "Can window perimeter sealant be painted?", a: "Doors & Windows is a paintable acrylic route. Silicone products generally require different finishing expectations, so check the relevant TDS." },
       { q: "Which product is used between a window frame and wall?", a: "GP 100, Premium GP 1010 and Doors & Windows are associated with different frame and wall-junction applications. Select according to frame material, exposure and finish." },
     ],
@@ -65,7 +65,7 @@ export const solutions: SolutionHub[] = [
       { title: "Joint function", text: "Differentiate weather sealing, perimeter glazing and engineered structural applications." },
     ],
     faqs: [
-      { q: "Which Resibond silicone is used for exterior glazing?", a: "Weather 5010 is mapped to exterior glazing and façade weather sealing. Neutral 3010 and other glazing products address different substrates and conditions." },
+      { q: "Which Resibond silicone is used for exterior glazing?", a: "Weather 5010 is recommended for exterior glazing and façade weather sealing. Neutral 3010 and other glazing products address different substrates and conditions." },
       { q: "Can acetoxy silicone be used on every glazing frame?", a: "No. Acetoxy chemistry may not suit sensitive metals, coatings or substrates. Confirm compatibility using the current TDS and an adhesion test." },
     ],
   },
@@ -83,7 +83,7 @@ export const solutions: SolutionHub[] = [
       { title: "Substrate preparation", text: "Confirm cleaning, backing, masking and primer requirements for every interface." },
     ],
     faqs: [
-      { q: "Which Resibond sealant is intended for weatherproofing?", a: "Weather 5010 is the primary mapped route for exterior weather sealing, façades, curtain walls and exposed glazing." },
+      { q: "Which Resibond sealant is intended for weatherproofing?", a: "Weather 5010 is the primary product for exterior weather sealing, façades, curtain walls and exposed glazing." },
       { q: "Can general-purpose silicone be used for façade joints?", a: "Do not assume general-purpose products meet façade movement or durability requirements. Use a product and joint design verified for the actual exposure." },
       { q: "Does every exterior joint require primer?", a: "Primer requirements vary by product and substrate. Conduct an adhesion assessment and follow the latest TDS and project specification." },
     ],
@@ -102,8 +102,8 @@ export const solutions: SolutionHub[] = [
       { title: "Bead layout", text: "Use the documented bead pattern so moisture can escape and the bond develops evenly." },
     ],
     faqs: [
-      { q: "Which Resibond adhesive can mount panels without nails?", a: "Zero Nail and Saves Nails are mapped to fixing applications, while Hybrid 2 in 1 covers broader sealing and bonding work. Load and substrate determine final selection." },
-      { q: "Can mounting adhesive be used for mirrors?", a: "Only use a product confirmed compatible with the mirror backing. Zero Nail and Mirror Mount are associated with mirror routes, subject to current technical guidance." },
+      { q: "Which Resibond adhesive can mount panels without nails?", a: "Zero Nail and Saves Nails are recommended for fixing applications, while Hybrid 2 in 1 covers broader sealing and bonding work. Load and substrate determine final selection." },
+      { q: "Can mounting adhesive be used for mirrors?", a: "Only use a product confirmed compatible with the mirror backing. Zero Nail and Mirror Mount are listed for mirror applications, subject to current technical guidance." },
       { q: "Do heavy items need temporary support?", a: "Yes. Heavy or safety-critical items may need temporary support during cure and permanent mechanical restraint depending on the load and application." },
     ],
   },

@@ -84,7 +84,7 @@ export function SubstrateDirectory({ entries }: { entries: SubstrateEntry[] }) {
       <div className="internal-page-hero__copy">
         <span className="section-index">Substrate directory · {entries.length} surfaces</span>
         <h1>Start with the surface.</h1>
-        <p>Choose the material you need to seal or bond. We’ll show the current Resibond product routes associated with it.</p>
+        <p>Choose the material you need to seal or bond. We’ll show the products listed for it. Coatings and finishes can affect compatibility.</p>
       </div>
     </header>
     <section className="directory-tools-band substrate-search-panel" aria-label="Search substrate directory">

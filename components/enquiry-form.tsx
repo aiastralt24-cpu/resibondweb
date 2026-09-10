@@ -90,7 +90,7 @@ export function EnquiryForm({
           name="application"
           minLength={3}
           required
-          placeholder="Describe the surfaces, environment, application, size and any exposure conditions."
+          placeholder="Describe the surfaces, application and exposure conditions."
         />
       </label>
 

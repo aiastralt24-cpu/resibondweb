@@ -22,9 +22,9 @@ function Arrow() {
 }
 
 function applicationDescription(entry: ApplicationEntry) {
-  if (entry.products.length === 0) return "Explore the application route and technical selection checks.";
+  if (entry.products.length === 0) return "Review products and selection guidance for this application.";
   const productNames = entry.products.map((product) => product.name).join(" and ");
-  return `${productNames} ${entry.products.length === 1 ? "is" : "are"} currently mapped to this job.`;
+  return `${productNames} ${entry.products.length === 1 ? "is" : "are"} recommended for this application.`;
 }
 
 export function ApplicationDirectory({ entries }: { entries: ApplicationEntry[] }) {

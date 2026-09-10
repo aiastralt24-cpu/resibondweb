@@ -11,7 +11,7 @@ export function ProductCard({ product, context="catalogue", reason, priority=fal
       <div className="product-card-copy">
         <div className="product-meta"><span>{product.chemistry}</span><span>{product.range}</span></div>
         <h2><Link href={`/products/${product.slug}`}>{product.name}</Link></h2>
-        <p>{context==="finder"&&reason?reason:context==="solution"?`A ${product.chemistry.toLowerCase()} route for ${product.applications.slice(0,2).join(" and ").toLowerCase()}.`:context==="related"?`${product.chemistry} chemistry · ${product.environment.join(" and ").toLowerCase()} use.`:product.positioning}</p>
+        <p>{reason || (context==="solution"?`${product.chemistry} product recommended for ${product.applications.slice(0,2).join(" and ").toLowerCase()}.`:context==="related"?`${product.chemistry} chemistry · ${product.environment.join(" and ").toLowerCase()} use.`:product.positioning)}</p>
         <Link className="text-link" href={`/products/${product.slug}`}>View product <span aria-hidden>→</span></Link>
       </div>
     </article>

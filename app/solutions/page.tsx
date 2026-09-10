@@ -21,7 +21,7 @@ export default function SolutionsPage() {
     <div className="breadcrumbs"><Link href="/">Home</Link><span>/</span><span>Solutions</span></div>
     <InternalPageHero eyebrow={`${String(solutions.length).padStart(2, "0")} solution guides`} title="Find Resibond by the job." description="Start with the application, then compare suitable products, surfaces and technical guidance." />
     <section className="solution-index-list">{solutions.map((solution, index) => <Link key={solution.slug} href={`/solutions/${solution.slug}`}>
-      <span>{String(index + 1).padStart(2, "0")}</span><h2>{solution.shortName}</h2><p>{solution.description}</p><strong>{solution.productSlugs.filter((slug) => activeProductSlugs.has(slug)).length} mapped products</strong><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M14 7l5 5-5 5" /></svg>
+      <span>{String(index + 1).padStart(2, "0")}</span><h2>{solution.shortName}</h2><p>{solution.description}</p><strong>{solution.productSlugs.filter((slug) => activeProductSlugs.has(slug)).length} products</strong><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M14 7l5 5-5 5" /></svg>
     </Link>)}</section>
   </>;
 }

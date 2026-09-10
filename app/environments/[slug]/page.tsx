@@ -11,7 +11,7 @@ const environmentBySlug = new Map(environments.map((environment) => [slugify(env
 export function generateStaticParams() { return environments.map((environment) => ({ slug: slugify(environment) })); }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const environment = environmentBySlug.get((await params).slug);
-  return environment ? { title: `${environment} Sealants & Adhesives`, description: `Compare Resibond products mapped to ${environment.toLowerCase()} applications.`, alternates: { canonical: `/environments/${slugify(environment)}` } } : {};
+  return environment ? { title: `${environment} Sealants & Adhesives`, description: `Compare Resibond products for ${environment.toLowerCase()} applications.`, alternates: { canonical: `/environments/${slugify(environment)}` } } : {};
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
@@ -22,7 +22,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Environments", path: "/environments" }, { name: environment, path: `/environments/${slugify(environment)}` }]} />
     <JsonLd data={{ "@context": "https://schema.org", "@type": "CollectionPage", name: `${environment} Resibond products`, url: `${base}/environments/${slugify(environment)}`, mainEntity: { "@type": "ItemList", itemListElement: matches.map((product, index) => ({ "@type": "ListItem", position: index + 1, name: product.name, url: `${base}/products/${product.slug}` })) } }} />
     <Breadcrumbs backHref="/environments" backLabel="Environments" items={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "By environment", href: "/environments" }, { label: environment }]} />
-    <header className="page-hero compact-page-hero"><span className="section-index">{matches.length} mapped products</span><h1>{environment} product routes.</h1><p>Use exposure as an initial filter. Final selection still depends on the joint, substrates, movement and current technical data.</p></header>
+    <header className="page-hero compact-page-hero"><span className="section-index">{matches.length} products</span><h1>{environment} products.</h1><p>Use exposure as an initial filter, then confirm the application, surfaces, movement and technical data.</p><Link className="button primary" href="/product-finder">Refine in Product Finder →</Link></header>
     <section className="section-shell"><div className="product-grid">{matches.map((product) => <ProductCard key={product.slug} product={product} />)}</div></section>
   </>;
 }

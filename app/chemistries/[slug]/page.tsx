@@ -18,7 +18,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   return <>
     <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Chemistries", path: "/chemistries" }, { name: chemistry, path: `/chemistries/${slugify(chemistry)}` }]} />
     <Breadcrumbs backHref="/chemistries" backLabel="Chemistries" items={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: "By chemistry", href: "/chemistries" }, { label: chemistry }]} />
-    <header className="page-hero"><span className="section-index">Chemistry guide</span><h1>{chemistry} product routes from Resibond.</h1><p>Compare the current products within this chemistry and follow through to application and substrate guidance.</p></header>
+    <header className="page-hero"><span className="section-index">Chemistry guide</span><h1>{chemistry} products from Resibond.</h1><p>Compare products in this chemistry, then review the application and surface guidance.</p></header>
     <section className="section-shell"><div className="product-grid">{matches.map((product) => <ProductCard key={product.slug} product={product} />)}</div></section>
   </>;
 }
